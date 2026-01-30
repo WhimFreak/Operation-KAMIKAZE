@@ -12,3 +12,9 @@ res://Relics/Smart Bombs/smart_bombs.gd
 res://Relics/Trickshots For Dummies/trickshot_for_dummies.gd
 res://Entities/player.tscn
 res://Entities/player.gd
+res://Relics/First Place!/first_place.tres
+res://Relics/Needle/needle.tres
+res://Relics/Stress Ball/stress_ball.tres
+res://Relics/Coffee/coffee.tres
+res://Relics/Adrenaline/adrenaline.tres
+res://Relics/Spray Bottle/spray_bottle.tres

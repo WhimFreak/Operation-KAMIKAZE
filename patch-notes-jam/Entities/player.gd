@@ -5,7 +5,7 @@ signal relic_obtained(relic: Relic)
 signal died
 
 enum States {IDLE, MOVING, DASHING, BOOSTING, DYING}
-enum Stats {DAMAGE, SHOTS_PER_SECOND, SHOT_SPEED, BULLET_COUNT, SPREAD, PIERCE,
+enum Stats {INITIAL_TIME, DAMAGE, SHOTS_PER_SECOND, SHOT_SPEED, BULLET_COUNT, SPREAD, PIERCE,
 MOVE_SPEED, DASH_MULTI, BOOST_MULTI, TIME_LOSS_ON_HIT, INACCURACY, PIERCE_DAMAGE_LOSS, TIME_MULTI,
 DAMAGE_TAKEN, BOMB_DAMAGE, BOMB_COOLDOWN, BOMB_SIZE, BULLET_SIZE}
 
@@ -36,6 +36,7 @@ var can_dash: bool = true
 var damaging_objects: Array
 
 var stats: Dictionary[Stats, float] = {
+	Stats.INITIAL_TIME: 0, # This ended up not being used lmao
 	Stats.DAMAGE: 10,
 	Stats.SHOTS_PER_SECOND: 4,
 	Stats.SHOT_SPEED: 800,
@@ -178,9 +179,11 @@ func handle_move(_delta: float):
 func handle_dashing(_delta: float):
 	if direction:
 		velocity = direction * get_stat(Stats.MOVE_SPEED) * get_stat(Stats.DASH_MULTI)
+		print(get_stat(Stats.DASH_MULTI))
 		boost_particles.process_material.set("direction", Vector3(-direction.x, -direction.y, 0))
 	else:
 		velocity = last_direction * get_stat(Stats.MOVE_SPEED) * get_stat(Stats.DASH_MULTI)
+		
 		boost_particles.process_material.set("direction", Vector3(-last_direction.x, -last_direction.y, 0))
 		
 		
