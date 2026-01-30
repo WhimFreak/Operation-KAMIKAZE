@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://dbgav063c0yyt"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_ay3u8"]
+[ext_resource type="Texture2D" uid="uid://barm5bxne4pyk" path="res://Relics/Gunpowder/gunpowder.png" id="2_15auc"]
+
+[resource]
+script = ExtResource("1_ay3u8")
+name = "GUNPOWDER"
+sprite = ExtResource("2_15auc")
+desc = "+ 25% BOMB DAMAGE
+• BOMB EXPLOSION IS 50% LARGER"
+stat_percent_mods = Dictionary[int, float]({
+15: 1.25,
+17: 1.5
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

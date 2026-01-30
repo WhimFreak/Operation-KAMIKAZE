@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://nyfbxv6dejvq"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_kp2xb"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_gseei"]
+[ext_resource type="Texture2D" uid="uid://bilpnirmki74o" path="res://Entities/Enemies/star.png" id="3_87h3k"]
+[ext_resource type="Script" uid="uid://db1m0lctgnpb0" path="res://Entities/Movement States/move_random.gd" id="4_lcbh8"]
+[ext_resource type="Script" uid="uid://cwnnga03os16h" path="res://Entities/Movement States/shoot.gd" id="5_87h3k"]
+[ext_resource type="PackedScene" uid="uid://6oa8kg27uuq4" path="res://Attacks/hostile_bullet.tscn" id="6_lcbh8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcbh8"]
+resource_local_to_scene = true
+shader = ExtResource("2_gseei")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_a0833"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v1jby"]
+resource_name = "windup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateManager/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_action"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0833"]
+_data = {
+&"RESET": SubResource("Animation_a0833"),
+&"windup": SubResource("Animation_v1jby")
+}
+
+[node name="StarEnemy" instance=ExtResource("1_kp2xb")]
+enemy_name = "STAR"
+max_hp = 80.0
+enhanced_max_hp = 120.0
+difficulty_value = 2
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_lcbh8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture_under = ExtResource("3_87h3k")
+texture_progress = ExtResource("3_87h3k")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_87h3k")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+texture = ExtResource("3_87h3k")
+
+[node name="BossExplosionParticles" parent="." index="5"]
+texture = ExtResource("3_87h3k")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("MoveRandom")
+
+[node name="MoveRandom" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_lcbh8")
+next_state = NodePath("../Shoot")
+speed = 70.0
+rotate_speed = 300.0
+constantly_rotates = true
+
+[node name="DirectionRays" type="Node2D" parent="StateManager/MoveRandom" index="0"]
+
+[node name="TopRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="0"]
+target_position = Vector2(0, -100)
+
+[node name="LeftRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="1"]
+target_position = Vector2(-100, 0)
+
+[node name="RightRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="2"]
+target_position = Vector2(100, 0)
+
+[node name="BottomRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="3"]
+target_position = Vector2(0, 100)
+
+[node name="CollisionCheck" type="RayCast2D" parent="StateManager/MoveRandom" index="1"]
+target_position = Vector2(30, 0)
+
+[node name="UnstuckTimer" type="Timer" parent="StateManager/MoveRandom" index="2"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Shoot" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after", "sources_parent")]
+script = ExtResource("5_87h3k")
+state_after = NodePath("../MoveRandom")
+rotate_speed = 300.0
+constantly_rotates = true
+bullet = ExtResource("6_lcbh8")
+sources_parent = NodePath("Markers")
+projectile_speed = 300.0
+enhanced_burst_count = 2
+
+[node name="Markers" type="Node2D" parent="StateManager/Shoot" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/Shoot/Markers" index="0"]
+position = Vector2(23, -1)
+
+[node name="Marker2D2" type="Marker2D" parent="StateManager/Shoot/Markers" index="1"]
+position = Vector2(15, 22)
+rotation = 1.134464
+
+[node name="Marker2D3" type="Marker2D" parent="StateManager/Shoot/Markers" index="2"]
+position = Vector2(-15, 22)
+rotation = 2.0071287
+
+[node name="Marker2D4" type="Marker2D" parent="StateManager/Shoot/Markers" index="3"]
+position = Vector2(-23, -1)
+rotation = -3.1415925
+
+[node name="Marker2D5" type="Marker2D" parent="StateManager/Shoot/Markers" index="4"]
+position = Vector2(0, -23)
+rotation = -1.5707964
+
+[node name="WindupAnim" type="AnimationPlayer" parent="StateManager/Shoot" index="1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_a0833")
+}
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/MoveRandom" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/MoveRandom/UnstuckTimer" to="StateManager/MoveRandom" method="_on_unstuck_timer_timeout"]

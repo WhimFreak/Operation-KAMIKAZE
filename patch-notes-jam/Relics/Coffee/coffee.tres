@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dr8k8m6w0uyv3"]
+
+[ext_resource type="Script" uid="uid://bkhnckxiikm06" path="res://Relics/Coffee/coffee.gd" id="1_ryx55"]
+[ext_resource type="Texture2D" uid="uid://dkyfqi40hnwm3" path="res://Relics/Coffee/coffee.png" id="2_ryx55"]
+
+[resource]
+script = ExtResource("1_ryx55")
+time_mult = 0.65
+name = "COFFEE"
+sprite = ExtResource("2_ryx55")
+desc = "+ 20% SPRINT SPEED
++ 20% DASH SPEED
+• WHILE SPRINTING, TIME PASSES 35% SLOWER"
+stat_percent_mods = Dictionary[int, float]({
+8: 1.2,
+9: 1.2
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

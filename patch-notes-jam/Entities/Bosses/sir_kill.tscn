@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=3 uid="uid://c46d4da7d3fo2"]
+
+[ext_resource type="PackedScene" uid="uid://d3mge82podgqq" path="res://Entities/Bosses/base_boss.tscn" id="1_kywrl"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_3680e"]
+[ext_resource type="Texture2D" uid="uid://c7qdb0lpdppur" path="res://Entities/Enemies/big_ring.png" id="3_mpprq"]
+[ext_resource type="Script" uid="uid://rkq7g4pwf2em" path="res://Entities/Movement States/sirkill_chase.gd" id="4_3680e"]
+[ext_resource type="Script" uid="uid://cdg1oy1vwg6tj" path="res://Entities/Movement States/explode.gd" id="5_mpprq"]
+[ext_resource type="PackedScene" uid="uid://6oa8kg27uuq4" path="res://Attacks/hostile_bullet.tscn" id="6_i8ii5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8ii5"]
+resource_local_to_scene = true
+shader = ExtResource("2_3680e")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpprq"]
+radius = 65.37584
+
+[sub_resource type="Animation" id="Animation_a0833"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v1jby"]
+resource_name = "windup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateManager/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_action"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0833"]
+_data = {
+&"RESET": SubResource("Animation_a0833"),
+&"windup": SubResource("Animation_v1jby")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8ii5"]
+radius = 60.41523
+
+[node name="SirKill" instance=ExtResource("1_kywrl")]
+enemy_name = "SIR KILL"
+max_hp = 2800.0
+pause_time_on_death = true
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_i8ii5")
+texture_under = ExtResource("3_mpprq")
+texture_progress = ExtResource("3_mpprq")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_mpprq")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_mpprq")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+texture = ExtResource("3_mpprq")
+
+[node name="BossExplosionParticles" parent="." index="5"]
+texture = ExtResource("3_mpprq")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("SirKillChase")
+
+[node name="SirKillChase" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("state_after")]
+script = ExtResource("4_3680e")
+state_after = NodePath("../Shoot")
+final_size = 2.0
+explosion_speed = 1.0
+rotate_speed = 3.0
+
+[node name="DurationTimer" type="Timer" parent="StateManager/SirKillChase" index="0"]
+wait_time = 7.0
+one_shot = true
+
+[node name="ExplosionTimer" type="Timer" parent="StateManager/SirKillChase" index="1"]
+
+[node name="Shoot" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after", "sources_parent")]
+script = ExtResource("5_mpprq")
+final_size = 15.0
+explosion_speed = 2.5
+state_after = NodePath("../SirKillChase")
+rotate_speed = 100.0
+constantly_rotates = true
+bullet = ExtResource("6_i8ii5")
+sources_parent = NodePath("Marker")
+projectile_speed = 200.0
+burst_count = 8
+bullet_count = 8
+spread = 360.0
+delay_between_shots = 0.4
+
+[node name="Marker" type="Node2D" parent="StateManager/Shoot" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/Shoot/Marker" index="0"]
+
+[node name="WindupAnim" type="AnimationPlayer" parent="StateManager/Shoot" index="1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_a0833")
+}
+
+[node name="CollisionShape2D" parent="ContactHurtbox" index="0"]
+shape = SubResource("CircleShape2D_i8ii5")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/SirKillChase" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/SirKillChase/DurationTimer" to="StateManager/SirKillChase" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="StateManager/SirKillChase/ExplosionTimer" to="StateManager/SirKillChase" method="_on_explosion_timer_timeout"]

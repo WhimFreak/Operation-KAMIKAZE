@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmg35f7kw1j17"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_kffy2"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_cjosb"]
+[ext_resource type="PackedScene" uid="uid://elc51myh3rvs" path="res://Attacks/area_exposion.tscn" id="2_qwpul"]
+[ext_resource type="PackedScene" uid="uid://6oa8kg27uuq4" path="res://Attacks/hostile_bullet.tscn" id="3_dhb62"]
+[ext_resource type="Texture2D" uid="uid://c7qdb0lpdppur" path="res://Entities/Enemies/big_ring.png" id="3_qwpul"]
+[ext_resource type="Script" uid="uid://ekkowegy31re" path="res://Entities/Movement States/chase.gd" id="4_cjosb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhb62"]
+resource_local_to_scene = true
+shader = ExtResource("2_cjosb")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhb62"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dlbe"]
+radius = 13.928389
+
+[node name="CircleEnemy" node_paths=PackedStringArray("sources_parent") instance=ExtResource("1_kffy2")]
+enemy_name = "CIRCLE"
+max_hp = 90.0
+enhanced_max_hp = 140.0
+difficulty_value = 2
+death_explosion = ExtResource("2_qwpul")
+delay = 0.8
+enhanced_final_size = 6.0
+explosion_speed = 0.7
+bullet = ExtResource("3_dhb62")
+sources_parent = NodePath("EnhancedBulletMarkers")
+projectile_speed = 300.0
+shoot_req_enhanced = true
+
+[node name="EnhancedBulletMarkers" type="Node2D" parent="." index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="EnhancedBulletMarkers" index="0"]
+position = Vector2(10, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="EnhancedBulletMarkers" index="1"]
+position = Vector2(7, 7.0000005)
+rotation = 0.7853982
+
+[node name="Marker2D3" type="Marker2D" parent="EnhancedBulletMarkers" index="2"]
+position = Vector2(0, 10)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Marker2D4" type="Marker2D" parent="EnhancedBulletMarkers" index="3"]
+position = Vector2(-7, 7)
+rotation = 2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Marker2D5" type="Marker2D" parent="EnhancedBulletMarkers" index="4"]
+position = Vector2(-10, 4.7683716e-07)
+rotation = 3.1415927
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Marker2D6" type="Marker2D" parent="EnhancedBulletMarkers" index="5"]
+position = Vector2(-7.000001, -7.000001)
+rotation = 3.9269907
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Marker2D7" type="Marker2D" parent="EnhancedBulletMarkers" index="6"]
+position = Vector2(-4.7683716e-07, -10)
+rotation = 4.712389
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Marker2D8" type="Marker2D" parent="EnhancedBulletMarkers" index="7"]
+position = Vector2(7, -7.0000005)
+rotation = 5.497787
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="HealthBar" parent="." index="2"]
+material = SubResource("ShaderMaterial_dhb62")
+texture_under = ExtResource("3_qwpul")
+texture_progress = ExtResource("3_qwpul")
+
+[node name="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_dhb62")
+
+[node name="DeathParticles" parent="." index="4"]
+texture = ExtResource("3_qwpul")
+
+[node name="StateManager" parent="." index="9" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Chase")
+
+[node name="Chase" type="Node2D" parent="StateManager" index="0"]
+script = ExtResource("4_cjosb")
+speed = 300.0
+rotate_speed = 3.0
+
+[node name="CollisionShape2D" parent="ContactHurtbox" index="0"]
+shape = SubResource("CircleShape2D_8dlbe")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/Chase" method="_on_navigation_agent_2d_velocity_computed"]

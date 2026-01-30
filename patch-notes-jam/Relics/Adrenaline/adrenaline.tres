@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ds4xsliggi7sb"]
+
+[ext_resource type="Script" uid="uid://it4vpo45agoo" path="res://Relics/Adrenaline/adrenaline.gd" id="1_guxye"]
+[ext_resource type="Texture2D" uid="uid://wan5bxfdb1yt" path="res://Relics/Adrenaline/adrenaline.png" id="2_guxye"]
+
+[resource]
+script = ExtResource("1_guxye")
+name = "ADRENALINE"
+sprite = ExtResource("2_guxye")
+desc = "• WHILE THE TIMER HAS A MINUTE OR LESS LEFT, GAIN +35% ATTACK SPEED, +20% MOVE SPEED, AND TIME PASSES 30% SLOWER"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

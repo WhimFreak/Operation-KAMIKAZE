@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhdneir1gipws"]
+
+[ext_resource type="Script" uid="uid://b65gk5xqrluse" path="res://Relics/Shrapnel/shrapnel.gd" id="1_n37tq"]
+[ext_resource type="Texture2D" uid="uid://u3l6sofdiktu" path="res://Relics/Shrapnel/shrapnel.png" id="2_byfjh"]
+
+[resource]
+script = ExtResource("1_n37tq")
+bullet_count = 9
+bullet_dmg_multi = 1.0
+name = "SHRAPNEL"
+sprite = ExtResource("2_byfjh")
+desc = "• BOMBS EXPLODE INTO BULLETS"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

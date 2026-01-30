@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqxii4hm0yes3"]
+
+[ext_resource type="Script" uid="uid://dlaxwypwrixw4" path="res://Relics/First Place!/first_place.gd" id="1_8epro"]
+[ext_resource type="Texture2D" uid="uid://b8lykap8hl1ve" path="res://Relics/First Place!/first_place.png" id="2_8epro"]
+
+[resource]
+script = ExtResource("1_8epro")
+time_req = 30.0
+name = "FIRST PLACE!"
+sprite = ExtResource("2_8epro")
+desc = "+ 3 DAMAGE
+• WHEN YOU CLEAR A STAGE, GAIN + 1 DAMAGE FOR EVERY 30 SECONDS LEFT ON THE TIMER"
+stat_flat_mods = Dictionary[int, float]({
+1: 3.0
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

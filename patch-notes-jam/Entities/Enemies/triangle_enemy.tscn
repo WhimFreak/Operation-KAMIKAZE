@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcq8ysygl6eek"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_4id4o"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_5utqs"]
+[ext_resource type="Texture2D" uid="uid://b4g5mwvglt5r8" path="res://Entities/Enemies/triangle.png" id="3_5utqs"]
+[ext_resource type="Script" uid="uid://db1m0lctgnpb0" path="res://Entities/Movement States/move_random.gd" id="4_a0833"]
+[ext_resource type="Script" uid="uid://cwnnga03os16h" path="res://Entities/Movement States/shoot.gd" id="5_v1jby"]
+[ext_resource type="PackedScene" uid="uid://6oa8kg27uuq4" path="res://Attacks/hostile_bullet.tscn" id="6_a0833"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knfaf"]
+resource_local_to_scene = true
+shader = ExtResource("2_5utqs")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_a0833"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v1jby"]
+resource_name = "windup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateManager/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_action"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0833"]
+_data = {
+&"RESET": SubResource("Animation_a0833"),
+&"windup": SubResource("Animation_v1jby")
+}
+
+[node name="TriangleEnemy" instance=ExtResource("1_4id4o")]
+enemy_name = "Triangle"
+max_hp = 35.0
+enhanced_max_hp = 60.0
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_knfaf")
+texture_under = ExtResource("3_5utqs")
+texture_progress = ExtResource("3_5utqs")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_5utqs")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("MoveRandom")
+
+[node name="MoveRandom" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_a0833")
+next_state = NodePath("../Shoot")
+speed = 80.0
+
+[node name="DirectionRays" type="Node2D" parent="StateManager/MoveRandom" index="0"]
+
+[node name="TopRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="0"]
+target_position = Vector2(0, -100)
+
+[node name="LeftRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="1"]
+target_position = Vector2(-100, 0)
+
+[node name="RightRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="2"]
+target_position = Vector2(100, 0)
+
+[node name="BottomRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="3"]
+target_position = Vector2(0, 100)
+
+[node name="CollisionCheck" type="RayCast2D" parent="StateManager/MoveRandom" index="1"]
+target_position = Vector2(30, 0)
+
+[node name="UnstuckTimer" type="Timer" parent="StateManager/MoveRandom" index="2"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Shoot" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after", "sources_parent")]
+script = ExtResource("5_v1jby")
+state_after = NodePath("../MoveRandom")
+bullet = ExtResource("6_a0833")
+sources_parent = NodePath("Marker")
+projectile_speed = 500.0
+enhanced_burst_count = 3
+delay_between_shots = 0.15
+
+[node name="Marker" type="Node2D" parent="StateManager/Shoot" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/Shoot/Marker" index="0"]
+position = Vector2(16, 0)
+
+[node name="WindupAnim" type="AnimationPlayer" parent="StateManager/Shoot" index="1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_a0833")
+}
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/MoveRandom" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/MoveRandom/UnstuckTimer" to="StateManager/MoveRandom" method="_on_unstuck_timer_timeout"]

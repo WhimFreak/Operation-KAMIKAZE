@@ -1,0 +1,365 @@
+[gd_scene load_steps=16 format=3 uid="uid://nx600w0qknqa"]
+
+[ext_resource type="PackedScene" uid="uid://d3mge82podgqq" path="res://Entities/Bosses/base_boss.tscn" id="1_01jbw"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_nfjvg"]
+[ext_resource type="Texture2D" uid="uid://bilpnirmki74o" path="res://Entities/Enemies/star.png" id="3_nxvmf"]
+[ext_resource type="Script" uid="uid://db1m0lctgnpb0" path="res://Entities/Movement States/move_random.gd" id="4_nxvmf"]
+[ext_resource type="Script" uid="uid://cwnnga03os16h" path="res://Entities/Movement States/shoot.gd" id="5_7fe6u"]
+[ext_resource type="PackedScene" uid="uid://6oa8kg27uuq4" path="res://Attacks/hostile_bullet.tscn" id="6_aitnr"]
+[ext_resource type="Script" uid="uid://ntg7s8xjxwlv" path="res://Entities/Movement States/summon.gd" id="7_nfjvg"]
+[ext_resource type="PackedScene" uid="uid://nyfbxv6dejvq" path="res://Entities/Enemies/star_enemy.tscn" id="8_nxvmf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itgmc"]
+resource_local_to_scene = true
+shader = ExtResource("2_nfjvg")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_a0833"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v1jby"]
+resource_name = "windup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateManager/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_action"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0833"]
+_data = {
+&"RESET": SubResource("Animation_a0833"),
+&"windup": SubResource("Animation_v1jby")
+}
+
+[sub_resource type="Animation" id="Animation_nxvmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nfjvg"]
+resource_name = "windup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333337, 0.39999998),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_action"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sd8uo"]
+_data = {
+&"RESET": SubResource("Animation_nxvmf"),
+&"windup": SubResource("Animation_nfjvg")
+}
+
+[node name="Starrage" instance=ExtResource("1_01jbw")]
+enemy_name = "STARRAGE"
+max_hp = 1300.0
+
+[node name="NavigationAgent2D" parent="." index="0"]
+radius = 32.0
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_itgmc")
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(72, 72)
+texture_under = ExtResource("3_nxvmf")
+texture_progress = ExtResource("3_nxvmf")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_nxvmf")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+texture = ExtResource("3_nxvmf")
+
+[node name="BossExplosionParticles" parent="." index="5"]
+texture = ExtResource("3_nxvmf")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Shoot")
+
+[node name="MoveRandom" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nxvmf")
+next_state = NodePath("../Shoot")
+max_dist = 350.0
+speed = 90.0
+rotate_speed = 300.0
+constantly_rotates = true
+
+[node name="DirectionRays" type="Node2D" parent="StateManager/MoveRandom" index="0"]
+
+[node name="TopRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="0"]
+target_position = Vector2(0, -100)
+
+[node name="LeftRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="1"]
+target_position = Vector2(-100, 0)
+
+[node name="RightRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="2"]
+target_position = Vector2(100, 0)
+
+[node name="BottomRay" type="RayCast2D" parent="StateManager/MoveRandom/DirectionRays" index="3"]
+target_position = Vector2(0, 100)
+
+[node name="CollisionCheck" type="RayCast2D" parent="StateManager/MoveRandom" index="1"]
+target_position = Vector2(30, 0)
+
+[node name="UnstuckTimer" type="Timer" parent="StateManager/MoveRandom" index="2"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Shoot" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after", "sources_parent")]
+script = ExtResource("5_7fe6u")
+state_after = NodePath("../Summon")
+rotate_speed = 240.0
+constantly_rotates = true
+bullet = ExtResource("6_aitnr")
+sources_parent = NodePath("Marker")
+projectile_speed = 250.0
+burst_count = 32
+enhanced_burst_count = 2
+delay_between_shots = 0.1
+
+[node name="Marker" type="Node2D" parent="StateManager/Shoot" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/Shoot/Marker" index="0"]
+position = Vector2(72, -2)
+
+[node name="Marker2D2" type="Marker2D" parent="StateManager/Shoot/Marker" index="1"]
+position = Vector2(47, 72)
+rotation = 1.134464
+
+[node name="Marker2D3" type="Marker2D" parent="StateManager/Shoot/Marker" index="2"]
+position = Vector2(-47, 72)
+rotation = 2.0071287
+
+[node name="Marker2D4" type="Marker2D" parent="StateManager/Shoot/Marker" index="3"]
+position = Vector2(-72, -2)
+rotation = -3.1415925
+
+[node name="Marker2D5" type="Marker2D" parent="StateManager/Shoot/Marker" index="4"]
+position = Vector2(0, -72)
+rotation = -1.5707964
+
+[node name="WindupAnim" type="AnimationPlayer" parent="StateManager/Shoot" index="1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_a0833")
+}
+
+[node name="Summon" type="Node2D" parent="StateManager" index="2" node_paths=PackedStringArray("state_after", "spawn_points")]
+script = ExtResource("7_nfjvg")
+state_after = NodePath("../MoveRandom2")
+enemy_spawned = ExtResource("8_nxvmf")
+spawn_points = [NodePath("Marker2D"), NodePath("Marker2D4"), NodePath("Marker2D5")]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/Summon" index="0"]
+position = Vector2(72, -2)
+
+[node name="Marker2D4" type="Marker2D" parent="StateManager/Summon" index="1"]
+position = Vector2(-72, -2)
+rotation = -3.1415925
+
+[node name="Marker2D5" type="Marker2D" parent="StateManager/Summon" index="2"]
+position = Vector2(0, -72)
+rotation = -3.1415925
+
+[node name="MoveRandom2" type="Node2D" parent="StateManager" index="3" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_nxvmf")
+next_state = NodePath("../ShootStars")
+max_dist = 350.0
+speed = 90.0
+rotate_speed = 300.0
+constantly_rotates = true
+
+[node name="DirectionRays" type="Node2D" parent="StateManager/MoveRandom2" index="0"]
+
+[node name="TopRay" type="RayCast2D" parent="StateManager/MoveRandom2/DirectionRays" index="0"]
+target_position = Vector2(0, -100)
+
+[node name="LeftRay" type="RayCast2D" parent="StateManager/MoveRandom2/DirectionRays" index="1"]
+target_position = Vector2(-100, 0)
+
+[node name="RightRay" type="RayCast2D" parent="StateManager/MoveRandom2/DirectionRays" index="2"]
+target_position = Vector2(100, 0)
+
+[node name="BottomRay" type="RayCast2D" parent="StateManager/MoveRandom2/DirectionRays" index="3"]
+target_position = Vector2(0, 100)
+
+[node name="CollisionCheck" type="RayCast2D" parent="StateManager/MoveRandom2" index="1"]
+target_position = Vector2(30, 0)
+
+[node name="UnstuckTimer" type="Timer" parent="StateManager/MoveRandom2" index="2"]
+wait_time = 4.0
+one_shot = true
+
+[node name="ShootStars" type="Node2D" parent="StateManager" index="4" node_paths=PackedStringArray("state_after", "sources_parent")]
+script = ExtResource("5_7fe6u")
+state_after = NodePath("../MoveRandom")
+rotate_speed = 240.0
+constantly_rotates = true
+bullet = ExtResource("6_aitnr")
+sources_parent = NodePath("Marker")
+burst_count = 5
+enhanced_burst_count = 2
+delay_between_shots = 0.8
+aim_towards_player = true
+max_innacuracy = 0.6
+
+[node name="Marker" type="Node2D" parent="StateManager/ShootStars" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="StateManager/ShootStars/Marker" index="0"]
+position = Vector2(72, -2)
+
+[node name="Marker2D2" type="Marker2D" parent="StateManager/ShootStars/Marker" index="1"]
+position = Vector2(47, 72)
+rotation = 1.134464
+
+[node name="Marker2D3" type="Marker2D" parent="StateManager/ShootStars/Marker" index="2"]
+position = Vector2(-47, 72)
+rotation = 2.0071287
+
+[node name="Marker2D4" type="Marker2D" parent="StateManager/ShootStars/Marker" index="3"]
+position = Vector2(-72, -2)
+rotation = -3.1415925
+
+[node name="Marker2D5" type="Marker2D" parent="StateManager/ShootStars/Marker" index="4"]
+position = Vector2(0, -72)
+rotation = -1.5707964
+
+[node name="Marker2D6" type="Marker2D" parent="StateManager/ShootStars/Marker" index="5"]
+position = Vector2(29, -22)
+rotation = -1.5707964
+
+[node name="Marker2D7" type="Marker2D" parent="StateManager/ShootStars/Marker" index="6"]
+position = Vector2(37, 20)
+rotation = -1.5707964
+
+[node name="Marker2D8" type="Marker2D" parent="StateManager/ShootStars/Marker" index="7"]
+position = Vector2(0, 43)
+rotation = -1.5707964
+
+[node name="Marker2D9" type="Marker2D" parent="StateManager/ShootStars/Marker" index="8"]
+position = Vector2(-38, 21)
+rotation = -1.5707964
+
+[node name="Marker2D10" type="Marker2D" parent="StateManager/ShootStars/Marker" index="9"]
+position = Vector2(-30, -22)
+rotation = -1.5707964
+
+[node name="Marker2D11" type="Marker2D" parent="StateManager/ShootStars/Marker" index="10"]
+position = Vector2(17, -44)
+rotation = -1.5707964
+
+[node name="Marker2D12" type="Marker2D" parent="StateManager/ShootStars/Marker" index="11"]
+position = Vector2(47, -15)
+rotation = -1.5707964
+
+[node name="Marker2D13" type="Marker2D" parent="StateManager/ShootStars/Marker" index="12"]
+position = Vector2(53, 10)
+rotation = -1.5707964
+
+[node name="Marker2D14" type="Marker2D" parent="StateManager/ShootStars/Marker" index="13"]
+position = Vector2(42, 39)
+rotation = -1.5707964
+
+[node name="Marker2D15" type="Marker2D" parent="StateManager/ShootStars/Marker" index="14"]
+position = Vector2(20, 57)
+rotation = -1.5707964
+
+[node name="Marker2D16" type="Marker2D" parent="StateManager/ShootStars/Marker" index="15"]
+position = Vector2(-19, 56)
+rotation = -1.5707964
+
+[node name="Marker2D17" type="Marker2D" parent="StateManager/ShootStars/Marker" index="16"]
+position = Vector2(-42, 39)
+rotation = -1.5707964
+
+[node name="Marker2D18" type="Marker2D" parent="StateManager/ShootStars/Marker" index="17"]
+position = Vector2(-53, 10)
+rotation = -1.5707964
+
+[node name="Marker2D19" type="Marker2D" parent="StateManager/ShootStars/Marker" index="18"]
+position = Vector2(-47, -15)
+rotation = -1.5707964
+
+[node name="Marker2D20" type="Marker2D" parent="StateManager/ShootStars/Marker" index="19"]
+position = Vector2(-16, -45)
+rotation = -1.5707964
+
+[node name="WindupAnim" type="AnimationPlayer" parent="StateManager/ShootStars" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_sd8uo")
+}
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/MoveRandom" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/MoveRandom2" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/MoveRandom/UnstuckTimer" to="StateManager/MoveRandom" method="_on_unstuck_timer_timeout"]
+[connection signal="timeout" from="StateManager/MoveRandom2/UnstuckTimer" to="StateManager/MoveRandom2" method="_on_unstuck_timer_timeout"]

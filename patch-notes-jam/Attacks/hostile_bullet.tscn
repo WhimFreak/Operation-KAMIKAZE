@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://6oa8kg27uuq4"]
+
+[ext_resource type="Script" uid="uid://deebvpwyg2ybo" path="res://Attacks/hostile_bullet.gd" id="1_4aya0"]
+[ext_resource type="Texture2D" uid="uid://b165a8ntmwbye" path="res://Assets/bullet.png" id="1_nh8gs"]
+[ext_resource type="Texture2D" uid="uid://cfxp72w7lt41o" path="res://Assets/ring.png" id="2_4aya0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87mjf"]
+size = Vector2(15, 14)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nh8gs"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.99607843, 0.32941177, 0.43529412, 0.3529412)
+
+[node name="HostileBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_4aya0")
+init_damage = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 1)
+texture = ExtResource("1_nh8gs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_87mjf")
+
+[node name="EnemyBulletParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-11, 0)
+amount = 4
+texture = ExtResource("2_4aya0")
+lifetime = 0.1
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nh8gs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,356 @@
+[gd_scene load_steps=19 format=3 uid="uid://dvn34dxff2vfd"]
+
+[ext_resource type="Texture2D" uid="uid://c1pyvaodhi2ex" path="res://Relics/Spray Bottle/spray_bottle.png" id="1_kwawy"]
+[ext_resource type="Script" uid="uid://cmq6fjfp3uqqr" path="res://Relics/relic_pickup.gd" id="1_lnher"]
+[ext_resource type="Texture2D" uid="uid://d1v2i8otjwv0" path="res://Assets/mini_particle_line.png" id="3_2ncd4"]
+[ext_resource type="Theme" uid="uid://btv0jccufsmkm" path="res://Resources/main_resource.tres" id="4_yhkgq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnher"]
+radius = 73.109505
+
+[sub_resource type="Curve" id="Curve_lnher"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 4.044983), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ncd4"]
+curve = SubResource("Curve_lnher")
+
+[sub_resource type="Gradient" id="Gradient_yhkgq"]
+colors = PackedColorArray(1, 1, 1, 0.6666667, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5041v"]
+gradient = SubResource("Gradient_yhkgq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxcp8"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_curve = SubResource("CurveTexture_2ncd4")
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_5041v")
+
+[sub_resource type="Animation" id="Animation_yhkgq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RelicSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RelicSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RelicSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShineParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2ncd4"]
+resource_name = "bob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RelicSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.0333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, 4), Vector2(0, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_fxmwg"]
+resource_name = "pickup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RelicSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -40), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RelicSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RelicSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShineParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5041v"]
+_data = {
+&"RESET": SubResource("Animation_yhkgq"),
+&"bob": SubResource("Animation_2ncd4"),
+&"pickup": SubResource("Animation_fxmwg")
+}
+
+[sub_resource type="Animation" id="Animation_pxcp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tooltip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tooltip/MarginContainer/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5041v"]
+resource_name = "open_tooltip"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tooltip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tooltip/MarginContainer/Text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxmwg"]
+_data = {
+&"RESET": SubResource("Animation_pxcp8"),
+&"open_tooltip": SubResource("Animation_5041v")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ncd4"]
+bg_color = Color(0.24313726, 0.19607843, 0.39215687, 0.5882353)
+
+[node name="RelicPickup" type="Area2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_lnher")
+
+[node name="RelicSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(4, 4)
+texture = ExtResource("1_kwawy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lnher")
+
+[node name="ShineParticles" type="GPUParticles2D" parent="."]
+amount = 10
+texture = ExtResource("3_2ncd4")
+lifetime = 0.4
+preprocess = 0.4
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_pxcp8")
+
+[node name="RelicAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5041v")
+}
+autoplay = "bob"
+
+[node name="TooltipAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fxmwg")
+}
+
+[node name="Tooltip" type="PanelContainer" parent="."]
+z_index = 4
+custom_minimum_size = Vector2(300, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -139.0
+offset_right = 150.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(150, 0)
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ncd4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Text" type="VBoxContainer" parent="Tooltip/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RelicName" type="RichTextLabel" parent="Tooltip/MarginContainer/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_yhkgq")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "SPRAY BOTTL"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Tooltip/MarginContainer/Text"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="RelicDesc" type="RichTextLabel" parent="Tooltip/MarginContainer/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_yhkgq")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Tooltip/MarginContainer/Text"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="Directions" type="RichTextLabel" parent="Tooltip/MarginContainer/Text"]
+layout_mode = 2
+theme = ExtResource("4_yhkgq")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=gray][E] TO PICK UP
+"
+fit_content = true
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

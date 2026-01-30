@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bs00f3wg6re2f"]
+
+[ext_resource type="Script" uid="uid://6xrl4n0j7ohj" path="res://Relics/Pocket Factory/pocket_factory.gd" id="1_jds82"]
+[ext_resource type="Texture2D" uid="uid://c4hf51btc8nfh" path="res://Relics/Pocket Factory/pocket_factory.png" id="2_fqbfh"]
+
+[resource]
+script = ExtResource("1_jds82")
+name = "POCKET FACTORY"
+sprite = ExtResource("2_fqbfh")
+desc = "• WHEN YOU SHOOT 15 TIMES, RECHARGE YOUR BOMB"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

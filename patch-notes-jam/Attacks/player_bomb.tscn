@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmyy37qgmopc3"]
+
+[ext_resource type="Texture2D" uid="uid://dqyelxqh65pvf" path="res://Assets/bomb.png" id="1_krlsu"]
+[ext_resource type="Script" uid="uid://blgsg5magtvvi" path="res://Attacks/player_bomb.gd" id="1_oxq0g"]
+[ext_resource type="Texture2D" uid="uid://d1v2i8otjwv0" path="res://Assets/mini_particle_line.png" id="2_kjuyi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjuyi"]
+radius = 22.0
+
+[sub_resource type="Gradient" id="Gradient_kjuyi"]
+offsets = PackedFloat32Array(0, 0.56, 1)
+colors = PackedColorArray(0.003921569, 0.79607844, 0.8117647, 1, 0.003921569, 0.7724314, 0.79694116, 0.90999997, 0.003921569, 0.53333336, 0.64705884, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oxq0g"]
+gradient = SubResource("Gradient_kjuyi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1s23e"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(-1, -0.5, 0)
+spread = 20.0
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_oxq0g")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxq0g"]
+radius = 412.0983
+
+[node name="PlayerBomb" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_oxq0g")
+explosion_speed = 0.4
+final_size = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kjuyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_krlsu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-8, -22)
+amount = 4
+texture = ExtResource("2_kjuyi")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_1s23e")
+
+[node name="HomingEnemyDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomingEnemyDetection"]
+shape = SubResource("CircleShape2D_oxq0g")
+
+[connection signal="body_entered" from="HomingEnemyDetection" to="." method="_on_homing_enemy_detection_body_entered"]
+[connection signal="body_exited" from="HomingEnemyDetection" to="." method="_on_homing_enemy_detection_body_exited"]

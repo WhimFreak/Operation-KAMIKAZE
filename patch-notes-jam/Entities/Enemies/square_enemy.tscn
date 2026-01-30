@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://xc2a4mve2lks"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_2qpt7"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_saac6"]
+[ext_resource type="Script" uid="uid://ekkowegy31re" path="res://Entities/Movement States/chase.gd" id="3_7jp0a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm6as"]
+resource_local_to_scene = true
+shader = ExtResource("2_saac6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[node name="SquareEnemy" instance=ExtResource("1_2qpt7")]
+enemy_name = "SQUARE"
+max_hp = 45.0
+enhanced_max_hp = 70.0
+spawn_self = true
+enemy_count = 2
+spawn_req_enhanced = true
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_pm6as")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Chase")
+
+[node name="Chase" type="Node2D" parent="StateManager" index="0"]
+script = ExtResource("3_7jp0a")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/Chase" method="_on_navigation_agent_2d_velocity_computed"]

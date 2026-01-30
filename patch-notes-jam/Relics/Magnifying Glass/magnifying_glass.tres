@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://cc3oyf1nnirxx"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_sjckk"]
+[ext_resource type="Texture2D" uid="uid://c1u2trq0y35kv" path="res://Relics/Magnifying Glass/magnifying_glass.png" id="2_rehi5"]
+
+[resource]
+script = ExtResource("1_sjckk")
+name = "MAGNIFYING GLASS"
+sprite = ExtResource("2_rehi5")
+desc = "+ 6 DAMAGE
+- 15% ATTACK SPEED
+• YOUR BULLETS ARE 50% LARGER"
+stat_flat_mods = Dictionary[int, float]({
+1: 6.0,
+18: 0.5
+})
+stat_percent_mods = Dictionary[int, float]({
+2: 0.85
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://b71j6ue3jyc5"]
+
+[ext_resource type="PackedScene" uid="uid://d3mge82podgqq" path="res://Entities/Bosses/base_boss.tscn" id="1_m512g"]
+[ext_resource type="PackedScene" uid="uid://xc2a4mve2lks" path="res://Entities/Enemies/square_enemy.tscn" id="2_26hdk"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_cd3gd"]
+[ext_resource type="Script" uid="uid://cw8srws4b4dhp" path="res://Entities/Movement States/bounce.gd" id="3_cd3gd"]
+[ext_resource type="Texture2D" uid="uid://brcr0sswiopdv" path="res://Assets/danger_line.png" id="4_bbk1g"]
+[ext_resource type="Script" uid="uid://dukwuelxsc1xs" path="res://Entities/Movement States/charge.gd" id="4_phfl3"]
+[ext_resource type="Script" uid="uid://cl8fvn33qxd34" path="res://Entities/Movement States/collide.gd" id="6_asvle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbk1g"]
+resource_local_to_scene = true
+shader = ExtResource("2_cd3gd")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26hdk"]
+radius = 31.016125
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd3gd"]
+size = Vector2(56, 56)
+
+[node name="QuadSquad" instance=ExtResource("1_m512g")]
+enemy_name = "QUAD SQUAD"
+max_hp = 130.0
+enemy_spawned = ExtResource("2_26hdk")
+enemy_count = 4
+
+[node name="NavigationAgent2D" parent="." index="0"]
+debug_enabled = true
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_bbk1g")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_26hdk")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Bounce")
+
+[node name="Bounce" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("state_after", "enhanced_state_after")]
+script = ExtResource("3_cd3gd")
+speed = 300.0
+max_trans_time = 9.0
+state_after = NodePath("../Charge")
+enhanced_state_after = NodePath("../Charge")
+
+[node name="TransitionTimer" type="Timer" parent="StateManager/Bounce" index="0"]
+one_shot = true
+
+[node name="Charge" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after")]
+script = ExtResource("4_phfl3")
+state_after = NodePath("../Collide")
+charge_speed = 900.0
+
+[node name="WallCheck" type="RayCast2D" parent="StateManager/Charge" index="0"]
+target_position = Vector2(2000, 0)
+
+[node name="DangerIndicator" type="Line2D" parent="StateManager/Charge" index="1"]
+width = 64.0
+default_color = Color(0.8745098, 0.02745098, 0.44705883, 1)
+texture = ExtResource("4_bbk1g")
+texture_mode = 1
+
+[node name="ChargeDelayTimer" type="Timer" parent="StateManager/Charge" index="2"]
+one_shot = true
+
+[node name="Collide" type="Node2D" parent="StateManager" index="2" node_paths=PackedStringArray("state_after")]
+script = ExtResource("6_asvle")
+state_after = NodePath("../Bounce")
+bullet_amount = 6
+
+[node name="BulletSource" type="Marker2D" parent="StateManager/Collide" index="0"]
+position = Vector2(-29, 0)
+rotation = -3.1415927
+
+[node name="CollisionShape2D" parent="ContactHurtbox" index="0"]
+shape = SubResource("RectangleShape2D_cd3gd")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/Bounce" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/Bounce/TransitionTimer" to="StateManager/Bounce" method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="StateManager/Charge/ChargeDelayTimer" to="StateManager/Charge" method="_on_charge_delay_timer_timeout"]

@@ -1,0 +1,1627 @@
+[gd_scene load_steps=96 format=4 uid="uid://doe75ntt8nlc7"]
+
+[ext_resource type="PackedScene" uid="uid://o1e54sj0e8ke" path="res://Entities/player.tscn" id="1_lxvvr"]
+[ext_resource type="Script" uid="uid://dg3jf8b2mp16p" path="res://Main Scenes/base_scene.gd" id="1_rjjk4"]
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="2_d5xbs"]
+[ext_resource type="Texture2D" uid="uid://cf3xw8c6wvgem" path="res://Assets/walls_tileset.png" id="2_ts2hy"]
+[ext_resource type="Script" uid="uid://1ovci1kyywu7" path="res://Managers/enemy_spawner.gd" id="3_dqiau"]
+[ext_resource type="Resource" uid="uid://jyxntmkl5jhx" path="res://Relics/Needle/needle.tres" id="4_25drn"]
+[ext_resource type="Script" uid="uid://cfjev3sks32cy" path="res://Managers/traversal_manager.gd" id="5_ji0ha"]
+[ext_resource type="PackedScene" uid="uid://xc2a4mve2lks" path="res://Entities/Enemies/square_enemy.tscn" id="5_ljam3"]
+[ext_resource type="Resource" uid="uid://bjtx570iuriaw" path="res://Relics/Stress Ball/stress_ball.tres" id="6_ee5m7"]
+[ext_resource type="Texture2D" uid="uid://cfxp72w7lt41o" path="res://Assets/ring.png" id="6_ljam3"]
+[ext_resource type="PackedScene" uid="uid://dcq8ysygl6eek" path="res://Entities/Enemies/triangle_enemy.tscn" id="6_oau1i"]
+[ext_resource type="Script" uid="uid://dxmamxm8jmdjq" path="res://Resources/room_info.gd" id="7_arpj5"]
+[ext_resource type="Texture2D" uid="uid://qq4d35bbo682" path="res://Assets/dmg_up.png" id="7_ct1x1"]
+[ext_resource type="PackedScene" uid="uid://dmg35f7kw1j17" path="res://Entities/Enemies/circle_enemy.tscn" id="7_h42il"]
+[ext_resource type="Resource" uid="uid://d1qtqgs0dxvyi" path="res://Relics/It's A Gun/its_a_gun.tres" id="7_oyag7"]
+[ext_resource type="Script" uid="uid://db35c4nvvcptc" path="res://Managers/ui.gd" id="7_ro6yk"]
+[ext_resource type="Theme" uid="uid://btv0jccufsmkm" path="res://Resources/main_resource.tres" id="8_npwt3"]
+[ext_resource type="PackedScene" uid="uid://nyfbxv6dejvq" path="res://Entities/Enemies/star_enemy.tscn" id="8_u6u3k"]
+[ext_resource type="Resource" uid="uid://cc3oyf1nnirxx" path="res://Relics/Magnifying Glass/magnifying_glass.tres" id="8_ymo2p"]
+[ext_resource type="PackedScene" uid="uid://b71j6ue3jyc5" path="res://Entities/Bosses/quad_squad.tscn" id="9_luk3g"]
+[ext_resource type="Resource" uid="uid://dbgav063c0yyt" path="res://Relics/Gunpowder/gunpowder.tres" id="9_sotc4"]
+[ext_resource type="PackedScene" uid="uid://nx600w0qknqa" path="res://Entities/Bosses/starrage.tscn" id="10_0gnlo"]
+[ext_resource type="Resource" uid="uid://dhdneir1gipws" path="res://Relics/Shrapnel/shrapnel.tres" id="10_enmj2"]
+[ext_resource type="Resource" uid="uid://xdrft0gle3qe" path="res://Relics/Smart Bombs/smart_bomb.tres" id="11_7p0eb"]
+[ext_resource type="PackedScene" uid="uid://kivml0b0pyoq" path="res://Managers/screen_clamper.tscn" id="11_ekqe0"]
+[ext_resource type="Texture2D" uid="uid://vp38m8rb8t5h" path="res://Assets/attack_speed_up.png" id="12_h42il"]
+[ext_resource type="Resource" uid="uid://dpk7nadxwurin" path="res://Relics/Blazing Torch/blazing_torch.tres" id="12_hi3qj"]
+[ext_resource type="Resource" uid="uid://d1c6pf1qo6plf" path="res://Relics/Pants On Fire/pants_on_fire.tres" id="13_42b8y"]
+[ext_resource type="Resource" uid="uid://bcl4v0mehyoqw" path="res://Relics/Car Battery/car_battery.tres" id="14_hdmtu"]
+[ext_resource type="Texture2D" uid="uid://dganqeeyl4pn0" path="res://Assets/boss.png" id="14_luk3g"]
+[ext_resource type="Resource" uid="uid://bs00f3wg6re2f" path="res://Relics/Pocket Factory/pocket_factory.tres" id="15_tiw8s"]
+[ext_resource type="Resource" uid="uid://dr8k8m6w0uyv3" path="res://Relics/Coffee/coffee.tres" id="16_njbr0"]
+[ext_resource type="PackedScene" uid="uid://c46d4da7d3fo2" path="res://Entities/Bosses/sir_kill.tscn" id="17_qkejv"]
+[ext_resource type="Resource" uid="uid://bnykd8g8f8nh5" path="res://Relics/Trickshots For Dummies/trickshots_for_dummies.tres" id="17_r04w4"]
+[ext_resource type="Resource" uid="uid://ds4xsliggi7sb" path="res://Relics/Adrenaline/adrenaline.tres" id="18_koeb2"]
+[ext_resource type="PackedScene" uid="uid://dalk1531wl4oy" path="res://Entities/Bosses/heart.tscn" id="18_lkmt3"]
+[ext_resource type="Texture2D" uid="uid://ckq1mp282fp6d" path="res://Assets/relic.png" id="19_1xtlt"]
+[ext_resource type="PackedScene" uid="uid://dyl8265hgc80o" path="res://Entities/Enemies/pentagon_enemy.tscn" id="19_36c11"]
+[ext_resource type="Resource" uid="uid://bsi0wy84u6vvu" path="res://Relics/Spray Bottle/spray_bottle.tres" id="21_d5xbs"]
+[ext_resource type="Resource" uid="uid://cqxii4hm0yes3" path="res://Relics/First Place!/first_place.tres" id="24_cm7or"]
+[ext_resource type="Texture2D" uid="uid://dn33tmcnjmb45" path="res://Assets/final_room.png" id="25_qkejv"]
+[ext_resource type="Texture2D" uid="uid://0ch8t6o544qd" path="res://Assets/time_up.png" id="28_eb1o3"]
+[ext_resource type="Texture2D" uid="uid://bdtd821e72wc2" path="res://Assets/time_for_damage.png" id="29_c0lp0"]
+[ext_resource type="Texture2D" uid="uid://dtlg1scqfffvw" path="res://Assets/move_speed_up.png" id="30_o1rmj"]
+[ext_resource type="Script" uid="uid://7cus5r7ixybe" path="res://Main Scenes/menus.gd" id="30_wf0j4"]
+[ext_resource type="Texture2D" uid="uid://0cbgjwskex08" path="res://Assets/bomb_dmg_up.png" id="31_w1o2s"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4wpwl"]
+vertices = PackedVector2Array(1378.0078, 27.992188, 1378.9766, 803.97656, 29.96875, 802.0078, 28.023438, 27)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(18, 17, 1388, 18, 1389, 814, 20, 812)])
+
+[sub_resource type="Environment" id="Environment_ts2hy"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.0
+glow_bloom = 0.3
+glow_hdr_threshold = 2.68
+glow_hdr_scale = 3.76
+glow_hdr_luminance_cap = 256.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wpwl"]
+texture = ExtResource("2_ts2hy")
+texture_region_size = Vector2i(64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -15.294275, -32, -14.975647, 32, -32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -15.931538, -32, -15.612907)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 17.524693, 32, 16.887432, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16.887432, -32, 32, -32, 32, 32, 15.612907, 35.36801)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -17.349442, -15.036184, -16.19281, -15.394737, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16.568798, -32, -32, 32, -32, 32, 32, 16.887432, 32, 16.887428, -16.887428)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -16.963902, -32, -15.421728, 16.963902, 32, 15.807274, 32, 32, -32, 32)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(16.887432, -32, 32, -32, 32, 32, 15.612907, 35.36801, -32, 32, -36.005276, 16.250168, 16.568802, 16.250168)
+
+[sub_resource type="TileSet" id="TileSet_dqiau"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_4wpwl")
+
+[sub_resource type="Gradient" id="Gradient_ljam3"]
+colors = PackedColorArray(1, 1, 1, 0.59607846, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hdmtu"]
+gradient = SubResource("Gradient_ljam3")
+
+[sub_resource type="Curve" id="Curve_ljam3"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 39.325844), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tiw8s"]
+curve = SubResource("Curve_ljam3")
+
+[sub_resource type="Curve" id="Curve_h42il"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.59550565), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_njbr0"]
+curve_x = SubResource("Curve_h42il")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oau1i"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 800.0
+directional_velocity_min = -600.0
+directional_velocity_max = 600.0
+directional_velocity_curve = SubResource("CurveXYZTexture_njbr0")
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 30.000002
+damping_curve = SubResource("CurveTexture_tiw8s")
+color_ramp = SubResource("GradientTexture1D_hdmtu")
+
+[sub_resource type="Animation" id="Animation_oau1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveCompleteParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaveCompleteParticles2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ljam3"]
+resource_name = "wave_complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaveCompleteParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaveCompleteParticles2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h42il"]
+_data = {
+&"RESET": SubResource("Animation_oau1i"),
+&"wave_complete": SubResource("Animation_ljam3")
+}
+
+[sub_resource type="Resource" id="Resource_fj8rq"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("7_ct1x1")
+label = "DAMAGE UP"
+clear_popup_text = "+1 DAMAGE"
+stat_flat_mods = Dictionary[int, float]({
+1: 1.0
+})
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_arpj5"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("12_h42il")
+label = "ATTACK SPEED UP"
+clear_popup_text = "+5% ATTACK SPEED"
+stat_percent_mods = Dictionary[int, float]({
+2: 1.05
+})
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_c0lp0"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("28_eb1o3")
+label = "+20 SECONDS"
+clear_popup_text = "+20 SECONDS"
+time_added = 20.0
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_o1rmj"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("29_c0lp0")
+label = "[font size=18] -25 SECONDS, DAMAGE UP"
+clear_popup_text = "-20 SECONDS. +2 DAMAGE"
+time_added = -20.0
+stat_flat_mods = Dictionary[int, float]({
+1: 2.0
+})
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_w1o2s"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("30_o1rmj")
+label = "MOVE SPEED UP"
+clear_popup_text = "+25 MOVE SPEED"
+stat_flat_mods = Dictionary[int, float]({
+7: 25.0
+})
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_36c11"]
+script = ExtResource("7_arpj5")
+icon = ExtResource("31_w1o2s")
+label = "BOMB DAMAGE UP"
+clear_popup_text = "+8 BOMB DAMAGE"
+stat_flat_mods = Dictionary[int, float]({
+15: 8.0
+})
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_u6u3k"]
+script = ExtResource("7_arpj5")
+type = 1
+icon = ExtResource("14_luk3g")
+label = "BOSS"
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_1xtlt"]
+script = ExtResource("7_arpj5")
+type = 2
+icon = ExtResource("19_1xtlt")
+label = "ITEM"
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Resource" id="Resource_oyag7"]
+script = ExtResource("7_arpj5")
+type = 3
+icon = ExtResource("25_qkejv")
+label = "THE HEART"
+metadata/_custom_type_script = "uid://dxmamxm8jmdjq"
+
+[sub_resource type="Gradient" id="Gradient_dqiau"]
+offsets = PackedFloat32Array(0, 0.8466667, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0.5764706)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ji0ha"]
+gradient = SubResource("Gradient_dqiau")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rjjk4"]
+gradient = SubResource("Gradient_dqiau")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ro6yk"]
+gradient = SubResource("Gradient_dqiau")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqiau"]
+gradient = SubResource("Gradient_dqiau")
+fill_from = Vector2(0.009345794, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjjk4"]
+size = Vector2(1417, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro6yk"]
+size = Vector2(225.25, 1303.5)
+
+[sub_resource type="Animation" id="Animation_ct1x1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.003921569, 0.53333336, 0.64705884, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xmxbw"]
+resource_name = "freeze"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.003921569, 0.53333336, 0.64705884, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_npwt3"]
+resource_name = "reduce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(0.8745098, 0.02745098, 0.44705883, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ct1x1"]
+_data = {
+&"RESET": SubResource("Animation_ct1x1"),
+&"freeze": SubResource("Animation_xmxbw"),
+&"reduce": SubResource("Animation_npwt3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgnp0"]
+bg_color = Color(0.20784314, 0.16470589, 0.33333334, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luk3g"]
+bg_color = Color(0.99607843, 0.32941177, 0.43529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkmt3"]
+bg_color = Color(0.24313726, 0.19607843, 0.39215687, 1)
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.003921569, 0.79607844, 0.8117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf0j4"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymo2p"]
+bg_color = Color(0.20784314, 0.16470589, 0.33333334, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymo2p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sotc4"]
+bg_color = Color(0.20784314, 0.16470589, 0.33333334, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enmj2"]
+bg_color = Color(0.10178899, 0.0756836, 0.17729008, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdmtu"]
+
+[sub_resource type="Animation" id="Animation_ymo2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WinScreen/PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinScreen/PanelContainer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinScreen/PanelContainer/MarginContainer/VBoxContainer/TimeRemainingLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinScreen/PanelContainer/MarginContainer/VBoxContainer/SuccessfulLabel:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wf0j4"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WinScreen/PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinScreen/PanelContainer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [-4.101523742186674, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinScreen/PanelContainer/MarginContainer/VBoxContainer/TimeRemainingLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinScreen/PanelContainer/MarginContainer/VBoxContainer/SuccessfulLabel:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sotc4"]
+_data = {
+&"RESET": SubResource("Animation_ymo2p"),
+&"win": SubResource("Animation_wf0j4")
+}
+
+[sub_resource type="Animation" id="Animation_enmj2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoseScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoseScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LoseScreen/BackToMenuButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sotc4"]
+resource_name = "lose"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoseScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoseScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LoseScreen/BackToMenuButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.2, 2.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0eb"]
+_data = {
+&"RESET": SubResource("Animation_enmj2"),
+&"lose": SubResource("Animation_sotc4")
+}
+
+[node name="BaseScene" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_rjjk4")
+player = NodePath("Player")
+starting_time = Array[float]([240.0, 240.0, 300.0])
+stage_floor_colors = Array[Color]([Color(0.039215688, 0, 0.05490196, 1), Color(0.039215688, 0.03137255, 0, 1), Color(0.05882353, 0.007843138, 0.007843138, 1), Color(0.05882353, 0.007843138, 0.007843138, 1)])
+stage_wall_colors = Array[Color]([Color(0.003921569, 0.79607844, 0.8117647, 1), Color(1, 0.8156863, 0.5019608, 1), Color(0.99607843, 0.32941177, 0.43529412, 1), Color(0.8745098, 0.02745098, 0.44705883, 1)])
+relic_pool = Array[ExtResource("2_d5xbs")]([ExtResource("21_d5xbs"), ExtResource("4_25drn"), ExtResource("24_cm7or"), ExtResource("6_ee5m7"), ExtResource("7_oyag7"), ExtResource("8_ymo2p"), ExtResource("9_sotc4"), ExtResource("10_enmj2"), ExtResource("11_7p0eb"), ExtResource("12_hi3qj"), ExtResource("13_42b8y"), ExtResource("14_hdmtu"), ExtResource("15_tiw8s"), ExtResource("16_njbr0"), ExtResource("17_r04w4"), ExtResource("18_koeb2")])
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_4wpwl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ts2hy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Floor" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1408.0
+offset_bottom = 824.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.039215688, 0, 0.05490196, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_lxvvr")]
+position = Vector2(590, 352)
+
+[node name="TileMap" type="Node2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.003921569, 0.79607844, 0.8117647, 1)
+
+[node name="Top" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAAAAAAAAQAAAAIAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQABAAIAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_dqiau")
+
+[node name="Left" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAAAAAwAAQAAAAMAAAAAAAAAAQAAAAIAAAA=")
+tile_set = SubResource("TileSet_dqiau")
+
+[node name="Right" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAVAAEAAQABAAEAAAAVAAIAAQABAAEAAAAVAAMAAQABAAEAAAAVAAQAAQABAAEAAAAVAAUAAQABAAEAAAAVAAYAAQABAAEAAAAVAAcAAQABAAEAAAAVAAgAAQABAAEAAAAVAAkAAQABAAEAAAAVAAoAAQABAAEAAAAVAAsAAQABAAEAAAAVAAwAAQABAAMAAAAVAAAAAQABAAIAAAA=")
+tile_set = SubResource("TileSet_dqiau")
+
+[node name="Bottom" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAABAAwAAQABAAAAAAACAAwAAQABAAAAAAADAAwAAQABAAAAAAAEAAwAAQABAAAAAAAFAAwAAQABAAAAAAAGAAwAAQABAAAAAAAHAAwAAQABAAAAAAAIAAwAAQABAAAAAAAJAAwAAQABAAAAAAAKAAwAAQABAAAAAAALAAwAAQABAAAAAAAMAAwAAQABAAAAAAANAAwAAQABAAAAAAAOAAwAAQABAAAAAAAPAAwAAQABAAAAAAAQAAwAAQABAAAAAAARAAwAAQABAAAAAAASAAwAAQABAAAAAAATAAwAAQABAAAAAAAUAAwAAQABAAAAAAAVAAwAAQABAAMAAAAAAAwAAQAAAAMAAAA=")
+tile_set = SubResource("TileSet_dqiau")
+
+[node name="Boundaries" type="TileMapLayer" parent="TileMap"]
+modulate = Color(1, 1, 1, 0)
+tile_map_data = PackedByteArray("AAAZAA8AAQABAAMAAAAZAA4AAQABAAEAAAAZAA0AAQABAAEAAAAZAAwAAQABAAEAAAAZAAsAAQABAAEAAAAZAAoAAQABAAEAAAAZAAkAAQABAAEAAAAZAAgAAQABAAEAAAAZAAcAAQABAAEAAAAZAAYAAQABAAEAAAAZAAUAAQABAAEAAAAZAAQAAQABAAEAAAAZAAMAAQABAAEAAAAZAAIAAQABAAEAAAAZAAEAAQABAAEAAAAZAAAAAQABAAEAAAAZAP//AQABAAEAAAD8////AQAAAAEAAAD8/wAAAQAAAAEAAAD8/wEAAQAAAAEAAAD8/wIAAQAAAAEAAAD8/wMAAQAAAAEAAAD8/wQAAQAAAAEAAAD8/wUAAQAAAAEAAAD8/wYAAQAAAAEAAAD8/wcAAQAAAAEAAAD8/wgAAQAAAAEAAAD8/wkAAQAAAAEAAAD8/woAAQAAAAEAAAD8/wsAAQAAAAEAAAD8/wwAAQAAAAEAAAD8/w0AAQAAAAEAAAD8/w4AAQAAAAEAAAD8/w8AAQAAAAMAAAD9/w8AAQABAAAAAAD+/w8AAQABAAAAAAD//w8AAQABAAAAAAAAAA8AAQABAAAAAAABAA8AAQABAAAAAAACAA8AAQABAAAAAAADAA8AAQABAAAAAAAEAA8AAQABAAAAAAAFAA8AAQABAAAAAAAGAA8AAQABAAAAAAAHAA8AAQABAAAAAAAIAA8AAQABAAAAAAAJAA8AAQABAAAAAAAKAA8AAQABAAAAAAALAA8AAQABAAAAAAAMAA8AAQABAAAAAAANAA8AAQABAAAAAAAOAA8AAQABAAAAAAAPAA8AAQABAAAAAAAQAA8AAQABAAAAAAARAA8AAQABAAAAAAASAA8AAQABAAAAAAATAA8AAQABAAAAAAAUAA8AAQABAAAAAAAVAA8AAQABAAAAAAAWAA8AAQABAAAAAAAXAA8AAQABAAAAAAAYAA8AAQABAAAAAAD8//7/AQAAAAIAAAAZAP7/AQABAAIAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAJAP7/AQAAAAAAAAAKAP7/AQAAAAAAAAALAP7/AQAAAAAAAAAMAP7/AQAAAAAAAAANAP7/AQAAAAAAAAAOAP7/AQAAAAAAAAAPAP7/AQAAAAAAAAAQAP7/AQAAAAAAAAARAP7/AQAAAAAAAAASAP7/AQAAAAAAAAATAP7/AQAAAAAAAAAUAP7/AQAAAAAAAAAVAP7/AQAAAAAAAAAWAP7/AQAAAAAAAAAXAP7/AQAAAAAAAAAYAP7/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_dqiau")
+
+[node name="EnemySpawner" type="Node2D" parent="." groups=["Enemy Spawner"]]
+script = ExtResource("3_dqiau")
+enemy_pool = Array[PackedScene]([ExtResource("5_ljam3"), ExtResource("6_oau1i"), ExtResource("7_h42il"), ExtResource("8_u6u3k"), ExtResource("19_36c11")])
+enemy_levels = Array[int]([1, 1, 1, 1, 1])
+bosses = Array[PackedScene]([ExtResource("9_luk3g"), ExtResource("10_0gnlo"), ExtResource("17_qkejv"), ExtResource("18_lkmt3")])
+
+[node name="SpawnArea" type="Control" parent="EnemySpawner"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 246.0
+offset_top = 179.0
+offset_right = 1145.0
+offset_bottom = 664.0
+
+[node name="EnemyContainer" type="Node2D" parent="EnemySpawner" groups=["Enemy Container"]]
+z_index = 1
+
+[node name="BossContainer" type="Node2D" parent="EnemySpawner"]
+
+[node name="WaveCompleteParticles" type="GPUParticles2D" parent="EnemySpawner"]
+position = Vector2(705, 434)
+emitting = false
+amount = 16
+texture = ExtResource("6_ljam3")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_oau1i")
+
+[node name="WaveCompleteParticles2" type="GPUParticles2D" parent="EnemySpawner"]
+position = Vector2(705, 434)
+emitting = false
+amount = 16
+texture = ExtResource("6_ljam3")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_oau1i")
+
+[node name="WaveCompleteAnim" type="AnimationPlayer" parent="EnemySpawner"]
+libraries = {
+&"": SubResource("AnimationLibrary_h42il")
+}
+
+[node name="BossSpawnPoints" type="Node2D" parent="EnemySpawner"]
+
+[node name="Center" type="Marker2D" parent="EnemySpawner/BossSpawnPoints"]
+position = Vector2(705, 400)
+
+[node name="QuadSpawnPoints" type="Node2D" parent="EnemySpawner/BossSpawnPoints"]
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawner/BossSpawnPoints/QuadSpawnPoints"]
+position = Vector2(614.00006, 344)
+rotation = -2.3561945
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawner/BossSpawnPoints/QuadSpawnPoints"]
+position = Vector2(795.0001, 344.00006)
+rotation = -0.7853982
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawner/BossSpawnPoints/QuadSpawnPoints"]
+position = Vector2(622, 468)
+rotation = 2.3561945
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawner/BossSpawnPoints/QuadSpawnPoints"]
+position = Vector2(793, 464)
+rotation = 0.7853982
+
+[node name="TraversalManager" type="Node2D" parent="."]
+position = Vector2(0, -1)
+script = ExtResource("5_ji0ha")
+encounter_rooms = Array[ExtResource("7_arpj5")]([SubResource("Resource_fj8rq"), SubResource("Resource_arpj5"), SubResource("Resource_c0lp0"), SubResource("Resource_o1rmj"), SubResource("Resource_w1o2s"), SubResource("Resource_36c11")])
+boss_room = SubResource("Resource_u6u3k")
+relic_room = SubResource("Resource_1xtlt")
+final_room = SubResource("Resource_oyag7")
+
+[node name="ArenaArea" type="Control" parent="TraversalManager" groups=["Arena Area"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 39.0
+offset_top = 49.0
+offset_right = 1364.0
+offset_bottom = 793.0
+
+[node name="OpenWalls" type="Control" parent="TraversalManager"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="TextureRect" parent="TraversalManager/OpenWalls"]
+layout_mode = 0
+offset_top = -262.0
+offset_right = 1408.0
+offset_bottom = 42.0
+texture = SubResource("GradientTexture2D_ji0ha")
+
+[node name="RoomInfo" type="VBoxContainer" parent="TraversalManager/OpenWalls/Top"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -47.0
+offset_right = 62.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomIcon" type="TextureRect" parent="TraversalManager/OpenWalls/Top/RoomInfo"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+texture = ExtResource("7_ct1x1")
+stretch_mode = 5
+
+[node name="RoomLabel" type="RichTextLabel" parent="TraversalManager/OpenWalls/Top/RoomInfo"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScreenClamper" parent="TraversalManager/OpenWalls/Top" node_paths=PackedStringArray("texture") instance=ExtResource("11_ekqe0")]
+position = Vector2(705, 177)
+texture = NodePath("../RoomInfo/RoomIcon")
+
+[node name="Left" type="TextureRect" parent="TraversalManager/OpenWalls"]
+layout_mode = 0
+offset_left = -374.0
+offset_top = -177.0
+offset_right = 32.0
+offset_bottom = 1070.0
+texture = SubResource("GradientTexture2D_rjjk4")
+
+[node name="RoomInfo" type="VBoxContainer" parent="TraversalManager/OpenWalls/Left"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -47.0
+offset_right = 62.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomIcon" type="TextureRect" parent="TraversalManager/OpenWalls/Left/RoomInfo"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("7_ct1x1")
+stretch_mode = 5
+
+[node name="RoomLabel" type="RichTextLabel" parent="TraversalManager/OpenWalls/Left/RoomInfo"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScreenClamper" parent="TraversalManager/OpenWalls/Left" node_paths=PackedStringArray("texture") instance=ExtResource("11_ekqe0")]
+position = Vector2(248, 596)
+texture = NodePath("../RoomInfo/RoomIcon")
+
+[node name="Right" type="TextureRect" parent="TraversalManager/OpenWalls"]
+layout_mode = 0
+offset_left = 1378.0
+offset_top = -205.0
+offset_right = 1794.0
+offset_bottom = 1056.0
+texture = SubResource("GradientTexture2D_ro6yk")
+
+[node name="RoomInfo" type="VBoxContainer" parent="TraversalManager/OpenWalls/Right"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -47.0
+offset_right = 62.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomIcon" type="TextureRect" parent="TraversalManager/OpenWalls/Right/RoomInfo"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("7_ct1x1")
+stretch_mode = 5
+
+[node name="RoomLabel" type="RichTextLabel" parent="TraversalManager/OpenWalls/Right/RoomInfo"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="ScreenClamper" parent="TraversalManager/OpenWalls/Right" node_paths=PackedStringArray("texture") instance=ExtResource("11_ekqe0")]
+position = Vector2(203, 624)
+texture = NodePath("../RoomInfo/RoomIcon")
+
+[node name="Bottom" type="TextureRect" parent="TraversalManager/OpenWalls"]
+layout_mode = 0
+offset_top = 791.0
+offset_right = 1408.0
+offset_bottom = 1096.0
+texture = SubResource("GradientTexture2D_dqiau")
+
+[node name="RoomInfo" type="VBoxContainer" parent="TraversalManager/OpenWalls/Bottom"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomIcon" type="TextureRect" parent="TraversalManager/OpenWalls/Bottom/RoomInfo"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("7_ct1x1")
+stretch_mode = 5
+
+[node name="RoomLabel" type="RichTextLabel" parent="TraversalManager/OpenWalls/Bottom/RoomInfo"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "A"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScreenClamper" parent="TraversalManager/OpenWalls/Bottom" node_paths=PackedStringArray("texture") instance=ExtResource("11_ekqe0")]
+position = Vector2(705, 132)
+texture = NodePath("../RoomInfo/RoomIcon")
+
+[node name="TraversalAreas" type="Node2D" parent="TraversalManager"]
+
+[node name="Top" type="Area2D" parent="TraversalManager/TraversalAreas"]
+position = Vector2(6, -11)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TraversalManager/TraversalAreas/Top"]
+position = Vector2(698.5, -109.5)
+shape = SubResource("RectangleShape2D_rjjk4")
+
+[node name="Left" type="Area2D" parent="TraversalManager/TraversalAreas"]
+position = Vector2(-365, 291)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TraversalManager/TraversalAreas/Left"]
+position = Vector2(238.625, 127.75)
+shape = SubResource("RectangleShape2D_ro6yk")
+
+[node name="Right" type="Area2D" parent="TraversalManager/TraversalAreas"]
+position = Vector2(1296, 248)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TraversalManager/TraversalAreas/Right"]
+position = Vector2(238.625, 169.25)
+shape = SubResource("RectangleShape2D_ro6yk")
+
+[node name="Bottom" type="Area2D" parent="TraversalManager/TraversalAreas"]
+position = Vector2(6, 1069)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TraversalManager/TraversalAreas/Bottom"]
+position = Vector2(698.5, -109.5)
+shape = SubResource("RectangleShape2D_rjjk4")
+
+[node name="ProjectileContainer" type="Node2D" parent="." groups=["Projectile Container"]]
+unique_name_in_owner = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProjectileContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 545.0
+offset_top = 203.0
+offset_right = 638.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 38
+
+[node name="Move" type="RichTextLabel" parent="ProjectileContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]WASD[/b]
+MOVE"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Shoot" type="RichTextLabel" parent="ProjectileContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]LMB[/b]
+SHOOT"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Bomb" type="RichTextLabel" parent="ProjectileContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]RMB[/b]
+BOMB"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Dash" type="RichTextLabel" parent="ProjectileContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]SHIFT[/b]
+DASH"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Move" type="RichTextLabel" parent="ProjectileContainer"]
+offset_left = 275.0
+offset_top = 433.0
+offset_right = 907.0
+offset_bottom = 503.0
+theme = ExtResource("8_npwt3")
+theme_override_colors/default_color = Color(0.8745098, 0.02745098, 0.44705883, 1)
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "REACH [color=white]THE HEART[/color] BEFORE YOU EXPLODE"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="RelicContainer" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("7_ro6yk")
+
+[node name="TimerLabel" type="RichTextLabel" parent="UI"]
+modulate = Color(0.003921569, 0.53333336, 0.64705884, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -55.0
+offset_right = 18.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 35)
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "fff"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerAnimations" type="AnimationPlayer" parent="UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_ct1x1")
+}
+
+[node name="BossUI" type="MarginContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/BossUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BossHealthBar" type="ProgressBar" parent="UI/BossUI/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_bgnp0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_luk3g")
+value = 50.0
+show_percentage = false
+
+[node name="BossName" type="RichTextLabel" parent="UI/BossUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]SQUAD QUAD"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menus" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("30_wf0j4")
+
+[node name="WinScreen" type="Panel" parent="Menus"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Menus/WinScreen"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(300, 200)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lkmt3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus/WinScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/WinScreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="SuccessfulLabel" type="RichTextLabel" parent="Menus/WinScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[b]MISSION SUCCESSFUL"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TimeRemainingLabel" type="RichTextLabel" parent="Menus/WinScreen/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "TIME REMAINING:
+4: 10"
+fit_content = true
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="BackToMenuButton" type="Button" parent="Menus/WinScreen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_npwt3")
+text = "EXIT"
+
+[node name="PauseScreen" type="Panel" parent="Menus"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Menus/PauseScreen"]
+custom_minimum_size = Vector2(750, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf0j4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menus/PauseScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Stats" type="PanelContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ymo2p")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="StatNames" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="DamageLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "DAMAGE"
+fit_content = true
+
+[node name="AtkSpeedLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "SHOTS PER SECOND"
+fit_content = true
+
+[node name="ShotSpeedLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "SHOT SPEED"
+fit_content = true
+
+[node name="BulletCountLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "BULLET COUNT"
+fit_content = true
+
+[node name="SpreadLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "BULLET SPREAD"
+fit_content = true
+
+[node name="PierceLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "BULLET PIERCE"
+fit_content = true
+
+[node name="PierceDamageLossLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "PIERCE DMG REDUC
+"
+fit_content = true
+
+[node name="BombDamageLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "BOMB DAMAGE
+"
+fit_content = true
+
+[node name="BombCooldownLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "BOMB COOLDOWN
+"
+fit_content = true
+
+[node name="SpeedLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "MOVE SPEED"
+fit_content = true
+
+[node name="TimeMultiLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "TIME MULT"
+fit_content = true
+
+[node name="DamageTakenLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNames"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "DAMAGE TAKEN MULT"
+fit_content = true
+
+[node name="StatNums" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 8
+
+[node name="DamageNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "8"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="AtkSpeedNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "1.0"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="ShotSpeedNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "200"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="BulletCountNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "1"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="SpreadNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "45"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="PierceNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "1"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="PierceDamageLossNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "0.65
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="BombDamageNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "0.65
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="BombCooldownNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "0.65
+"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="SpeedNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "80"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="TimeMultiNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "1.0"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="DamageTakenNum" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Stats/MarginContainer/HBoxContainer/StatNums"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+bbcode_enabled = true
+text = "1.0"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Pause" type="PanelContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ymo2p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 28
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]PAUSED"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ContinueButton" type="Button" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_npwt3")
+text = "CONTINUE"
+
+[node name="BackToMenuButton" type="Button" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_npwt3")
+text = "EXIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Relics" type="PanelContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sotc4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Relics"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Relics/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Relics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 21
+bbcode_enabled = true
+text = "[b]ITEMS"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="RelicContainer" type="GridContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Relics/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="Tooltip" type="PanelContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer"]
+z_index = 4
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_enmj2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="VBoxContainer" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RelicName" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip/MarginContainer/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip/MarginContainer/Text"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="RelicDesc" type="RichTextLabel" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip/MarginContainer/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("8_npwt3")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=gray][HOVER OVER AN ITEM]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Menus/PauseScreen/PanelContainer/HBoxContainer/VBoxContainer/Tooltip/MarginContainer/Text"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="LoseScreen" type="Panel" parent="Menus"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hdmtu")
+
+[node name="LoseText" type="RichTextLabel" parent="Menus/LoseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -20.0
+offset_right = 151.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_npwt3")
+theme_override_colors/default_color = Color(0.8745098, 0.02745098, 0.44705883, 1)
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]YOU HAVE FAILED"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="BackToMenuButton" type="Button" parent="Menus/LoseScreen"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = 50.0
+offset_right = 82.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_npwt3")
+text = "BACK TO MENU"
+
+[node name="WinAnim" type="AnimationPlayer" parent="Menus"]
+libraries = {
+&"": SubResource("AnimationLibrary_sotc4")
+}
+
+[node name="LoseAnim" type="AnimationPlayer" parent="Menus"]
+libraries = {
+&"": SubResource("AnimationLibrary_7p0eb")
+}
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="pressed" from="Menus/WinScreen/PanelContainer/MarginContainer/VBoxContainer/BackToMenuButton" to="Menus" method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer/VBoxContainer/ContinueButton" to="Menus" method="unpause"]
+[connection signal="pressed" from="Menus/PauseScreen/PanelContainer/HBoxContainer/Pause/VBoxContainer/VBoxContainer/BackToMenuButton" to="Menus" method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="Menus/LoseScreen/BackToMenuButton" to="Menus" method="_on_back_to_menu_button_pressed"]

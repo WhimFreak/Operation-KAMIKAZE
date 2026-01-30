@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcl4v0mehyoqw"]
+
+[ext_resource type="Script" uid="uid://bq6g4ill82att" path="res://Relics/Car Battery/car_battery.gd" id="1_qyojb"]
+[ext_resource type="Texture2D" uid="uid://bau00bk870vqd" path="res://Relics/Car Battery/car_battery.png" id="2_qyojb"]
+
+[resource]
+script = ExtResource("1_qyojb")
+name = "CAR BATTERY"
+sprite = ExtResource("2_qyojb")
+desc = "+ 30 SECONDS
+• WHEN YOU CLEAR A STAGE, GAIN + 30 SECONDS"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

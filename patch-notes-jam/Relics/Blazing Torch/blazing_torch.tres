@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dpk7nadxwurin"]
+
+[ext_resource type="Script" uid="uid://b3f1felqnpvu4" path="res://Relics/Blazing Torch/blazing_torch.gd" id="1_04lcx"]
+[ext_resource type="Texture2D" uid="uid://c7bj3540lp4am" path="res://Relics/Blazing Torch/blazing_torch.png" id="2_3yi7f"]
+
+[resource]
+script = ExtResource("1_04lcx")
+name = "EVERBURNING TORCH"
+sprite = ExtResource("2_3yi7f")
+desc = "• GAIN AN AURA THAT DAMAGES NEARBY ENEMIES"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

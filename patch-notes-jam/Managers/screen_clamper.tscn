@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kivml0b0pyoq"]
+
+[ext_resource type="Script" uid="uid://b0q0m7xie1n33" path="res://screen_clamper.gd" id="1_kejqu"]
+
+[node name="ScreenClamper" type="Node2D"]
+script = ExtResource("1_kejqu")

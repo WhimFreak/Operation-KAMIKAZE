@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1c6pf1qo6plf"]
+
+[ext_resource type="Script" uid="uid://bmndsd2t05smk" path="res://Relics/Pants On Fire/pants_on_fire.gd" id="1_5dpfg"]
+[ext_resource type="Texture2D" uid="uid://dr8jsy04vg5c8" path="res://Relics/Pants On Fire/pants_on_fire.png" id="2_n8net"]
+
+[resource]
+script = ExtResource("1_5dpfg")
+name = "PANTS ON FIRE"
+sprite = ExtResource("2_n8net")
+desc = "• WHILE SPRINTING, LEAVE A DAMAGING TRAIL"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

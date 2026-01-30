@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://bjtx570iuriaw"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_0wpra"]
+[ext_resource type="Texture2D" uid="uid://l7x7o34jvh1t" path="res://Relics/Stress Ball/stress_ball.png" id="2_2n3gm"]
+
+[resource]
+script = ExtResource("1_0wpra")
+name = "STRESS BALL"
+sprite = ExtResource("2_2n3gm")
+desc = "- 30% DAMAGE TAKEN"
+stat_flat_mods = Dictionary[int, float]({
+14: -0.3
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

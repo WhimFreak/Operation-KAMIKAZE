@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwn5rqrrx236x"]
+
+[ext_resource type="Script" uid="uid://bafygp3vsn53e" path="res://Attacks/player_damage_circle.gd" id="1_cgwjr"]
+[ext_resource type="Texture2D" uid="uid://ci7lmxmjgt311" path="res://Assets/player_explosion.png" id="1_qirnv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgwjr"]
+radius = 63.07139
+
+[node name="PlayerDamageCircle" type="Area2D"]
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_cgwjr")
+duration = 1.0
+final_size = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qirnv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cgwjr")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="DurationTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

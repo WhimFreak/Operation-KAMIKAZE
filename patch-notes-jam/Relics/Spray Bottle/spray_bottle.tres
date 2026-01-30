@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://bsi0wy84u6vvu"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_fr4kh"]
+[ext_resource type="Texture2D" uid="uid://c1pyvaodhi2ex" path="res://Relics/Spray Bottle/spray_bottle.png" id="2_vqbc0"]
+
+[resource]
+script = ExtResource("1_fr4kh")
+name = "SPRAY BOTTLE"
+sprite = ExtResource("2_vqbc0")
+desc = "+ 45% ATTACK SPEED
+• BULLETS BECOME INACCURATE"
+stat_flat_mods = Dictionary[int, float]({
+11: 0.25
+})
+stat_percent_mods = Dictionary[int, float]({
+2: 1.45
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

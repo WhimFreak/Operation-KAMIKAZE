@@ -1,0 +1,14 @@
+res://Main Scenes/splashart.tscn
+res://Resources/main_resource.tres
+res://Resources/pulse.gdshader
+res://Resources/checkerboard.gdshader
+res://Main Scenes/splash_art.tscn
+res://Main Scenes/base_scene.tscn
+res://Relics/Trickshots For Dummies/trickshots_for_dummies.gd
+res://Relics/Trickshots For Dummies/trickshots_for_dummies.tres
+res://Relics/relic.gd
+res://Relics/Smart Bombs/smart_bomb.tres
+res://Relics/Smart Bombs/smart_bombs.gd
+res://Relics/Trickshots For Dummies/trickshot_for_dummies.gd
+res://Entities/player.tscn
+res://Entities/player.gd

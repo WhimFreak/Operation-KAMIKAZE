@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyl8265hgc80o"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_c1n30"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_l00og"]
+[ext_resource type="Script" uid="uid://cw8srws4b4dhp" path="res://Entities/Movement States/bounce.gd" id="3_2dyfg"]
+[ext_resource type="Texture2D" uid="uid://chhaxsnho7q3a" path="res://Entities/Enemies/pentagon.png" id="3_tgxng"]
+[ext_resource type="Script" uid="uid://dukwuelxsc1xs" path="res://Entities/Movement States/charge.gd" id="4_tgxng"]
+[ext_resource type="Texture2D" uid="uid://brcr0sswiopdv" path="res://Assets/danger_line.png" id="5_3wtd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jc2q"]
+resource_local_to_scene = true
+shader = ExtResource("2_l00og")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgxng"]
+radius = 20.0
+
+[node name="PentagonEnemy" instance=ExtResource("1_c1n30")]
+enemy_name = "PENTAGON"
+max_hp = 55.0
+enhanced_max_hp = 85.0
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_1jc2q")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+texture_under = ExtResource("3_tgxng")
+texture_progress = ExtResource("3_tgxng")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_tgxng")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_tgxng")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+texture = ExtResource("3_tgxng")
+
+[node name="BossExplosionParticles" parent="." index="5"]
+texture = ExtResource("3_tgxng")
+
+[node name="StateManager" parent="." index="8" node_paths=PackedStringArray("default_state")]
+default_state = NodePath("Bounce")
+
+[node name="Bounce" type="Node2D" parent="StateManager" index="0" node_paths=PackedStringArray("state_after", "enhanced_state_after")]
+script = ExtResource("3_2dyfg")
+speed = 300.0
+min_trans_time = 4.0
+max_trans_time = 9.0
+state_after = NodePath(".")
+enhanced_state_after = NodePath("../Charge")
+
+[node name="TransitionTimer" type="Timer" parent="StateManager/Bounce" index="0"]
+one_shot = true
+
+[node name="Charge" type="Node2D" parent="StateManager" index="1" node_paths=PackedStringArray("state_after")]
+script = ExtResource("4_tgxng")
+state_after = NodePath("../Bounce")
+charge_speed = 900.0
+
+[node name="WallCheck" type="RayCast2D" parent="StateManager/Charge" index="0"]
+target_position = Vector2(2000, 0)
+
+[node name="DangerIndicator" type="Line2D" parent="StateManager/Charge" index="1"]
+width = 64.0
+default_color = Color(0.8745098, 0.02745098, 0.44705883, 1)
+texture = ExtResource("5_3wtd2")
+texture_mode = 1
+
+[node name="ChargeDelayTimer" type="Timer" parent="StateManager/Charge" index="2"]
+one_shot = true
+
+[node name="CollisionShape2D" parent="ContactHurtbox" index="0"]
+position = Vector2(0, 4)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateManager/Bounce" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateManager/Bounce/TransitionTimer" to="StateManager/Bounce" method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="StateManager/Charge/ChargeDelayTimer" to="StateManager/Charge" method="_on_charge_delay_timer_timeout"]

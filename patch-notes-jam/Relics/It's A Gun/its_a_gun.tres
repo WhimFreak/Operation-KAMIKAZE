@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://d1qtqgs0dxvyi"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_qyh0b"]
+[ext_resource type="Texture2D" uid="uid://8rcm2o7o6032" path="res://Relics/It's A Gun/gun.png" id="2_7h0ys"]
+
+[resource]
+script = ExtResource("1_qyh0b")
+name = "A gun."
+sprite = ExtResource("2_7h0ys")
+desc = "+ 1 BULLET COUNT
+- 25% ATTACK SPEED
+• PEW PEW"
+stat_flat_mods = Dictionary[int, float]({
+4: 1.0
+})
+stat_percent_mods = Dictionary[int, float]({
+2: 0.75
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://elc51myh3rvs"]
+
+[ext_resource type="Script" uid="uid://co0w68jgkpejr" path="res://Attacks/area_exposion.gd" id="1_cdj47"]
+[ext_resource type="Texture2D" uid="uid://cgt0qrlwq0wa3" path="res://Assets/explosion.png" id="1_d4vx4"]
+[ext_resource type="Texture2D" uid="uid://byd0hj28s1ls3" path="res://Assets/explosion_warning.png" id="3_3ejb6"]
+
+[node name="AreaExposion" type="Node2D"]
+z_index = 1
+script = ExtResource("1_cdj47")
+final_size = 1.0
+damage = 6.0
+
+[node name="ExplosionWarning" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5882353)
+texture = ExtResource("3_3ejb6")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Explosion" type="Area2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 0
+collision_mask = 2
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Explosion"]
+texture = ExtResource("1_d4vx4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Explosion"]
+polygon = PackedVector2Array(0, -64, 23, -60, 43, -48, 60, -24, 64, 0, 57, 0, 55, -21, 47, -33, 35, -46, 17, -55, 0, -58)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Explosion"]
+rotation = 1.5707964
+polygon = PackedVector2Array(0, -64, 23, -60, 43, -48, 60, -24, 64, 0, 57, 0, 55, -21, 47, -33, 35, -46, 17, -55, 0, -58)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Explosion"]
+rotation = -3.1415925
+polygon = PackedVector2Array(0, -64, 23, -60, 43, -48, 60, -24, 64, 0, 57, 0, 55, -21, 47, -33, 35, -46, 17, -55, 0, -58)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Explosion"]
+rotation = -1.5707964
+polygon = PackedVector2Array(0, -64, 23, -60, 43, -48, 60, -24, 64, 0, 57, 0, 55, -21, 47, -33, 35, -46, 17, -55, 0, -58)
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Explosion" to="." method="_on_explosion_area_body_entered"]
+[connection signal="body_exited" from="Explosion" to="." method="_on_explosion_area_body_exited"]

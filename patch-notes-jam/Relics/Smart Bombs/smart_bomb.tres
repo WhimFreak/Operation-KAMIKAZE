@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://xdrft0gle3qe"]
+
+[ext_resource type="Script" uid="uid://bkuifbcs4nm2v" path="res://Relics/Smart Bombs/smart_bombs.gd" id="1_7lkmh"]
+[ext_resource type="Texture2D" uid="uid://bwawnws2ih7q" path="res://Relics/Smart Bombs/smart_bomb.png" id="2_75a65"]
+
+[resource]
+script = ExtResource("1_7lkmh")
+name = "SMART BOMBS"
+sprite = ExtResource("2_75a65")
+desc = "• BOMBS ARE SLIGHTLY FASTER AND HOMES TOWARDS NEARBY ENEMIES"
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

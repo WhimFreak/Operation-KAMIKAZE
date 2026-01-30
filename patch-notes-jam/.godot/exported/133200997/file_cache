@@ -1,0 +1,45 @@
+res://Attacks/area_exposion.tscn::8c09c8e7214ffd2509ca386d4191e052::1769386310::res://.godot/exported/133200997/export-828933736c5bdd3c8822022960cae641-area_exposion.scn
+res://Attacks/hostile_bullet.tscn::2b6c1065ac1524b1f80ee5465a8f27b6::1769430851::res://.godot/exported/133200997/export-182dc82665a2d27aed4235006af6475b-hostile_bullet.scn
+res://Attacks/player_bomb.tscn::f7ea277991092ae8f0ebffa7fc183111::1769443940::res://.godot/exported/133200997/export-439095e0c9c1a7eb9422104a4be09eef-player_bomb.scn
+res://Attacks/player_bullet.tscn::7008edc1d524ba91e1523325f0bb1b02::1769444999::res://.godot/exported/133200997/export-e880832aff08c359287f87698c7ac5b5-player_bullet.scn
+res://Attacks/player_damage_circle.tscn::924b658e4ab3b4b038d2748e8b574929::1769390237::res://.godot/exported/133200997/export-94d68ca9be210e4711b655987412265d-player_damage_circle.scn
+res://Attacks/player_explosion.tscn::815106a4f0aa9687defbd9c8aab9fc85::1769343688::res://.godot/exported/133200997/export-abca5dc5c1565017d847826d6626b237-player_explosion.scn
+res://Entities/Bosses/base_boss.tscn::7e431ebc09e994dc2a50ba897870405f::1769432867::res://.godot/exported/133200997/export-503dc68711ef4a254142ea02b8f588c9-base_boss.scn
+res://Entities/Bosses/heart.tscn::1e44dac52f98398a299e50a9149c9375::1769263260::res://.godot/exported/133200997/export-830e5e2371cc57e3d512fdf347225e45-heart.scn
+res://Entities/Bosses/quad_squad.tscn::d96d47bb5df041ad1af17909767205a6::1769385770::res://.godot/exported/133200997/export-4501406f62031047951e1418fb6f1b8e-quad_squad.scn
+res://Entities/Bosses/sir_kill.tscn::d95b369659415a233eff3cf1e75cfc04::1769447376::res://.godot/exported/133200997/export-3de43cdf9161ed1c0e1594c72e7887a4-sir_kill.scn
+res://Entities/Bosses/starrage.tscn::69d97a0eee3801231e746270c7708a40::1769449724::res://.godot/exported/133200997/export-eaad7b303f0bc6291f6697b4e127744c-starrage.scn
+res://Entities/Enemies/base_enemy.tscn::5564ab0238858ddaa093e932af00290b::1769437218::res://.godot/exported/133200997/export-31f526b5bc2ef995fd5b22bdbe901eee-base_enemy.scn
+res://Entities/Enemies/circle_enemy.tscn::4cb6d210838d0865a01b07eb3cff025f::1769382200::res://.godot/exported/133200997/export-7e499d3acae38f12b4b7aac6d88ebb5e-circle_enemy.scn
+res://Entities/Enemies/pentagon_enemy.tscn::cc10faadcc28c7117210b30e2407cdda::1769435569::res://.godot/exported/133200997/export-081e0132be3de15752804fb4177b8f20-pentagon_enemy.scn
+res://Entities/Enemies/square_enemy.tscn::c839bfd3df51c32e041a6e8610c0e103::1769382024::res://.godot/exported/133200997/export-38593b75156015f9d077a921d6581350-square_enemy.scn
+res://Entities/Enemies/star_enemy.tscn::d93067cb3a25f61bc0d4d8a91d8f5ee7::1769449509::res://.godot/exported/133200997/export-2a4e768ea6e5f6c241b3ba9eaf3a5a5d-star_enemy.scn
+res://Entities/Enemies/triangle_enemy.tscn::8ac8cb3c051e98d64ced72c79f9517a4::1769449766::res://.godot/exported/133200997/export-e655aa89f7bb69754f99297cb8969e8c-triangle_enemy.scn
+res://Entities/player.tscn::c6097e33819401162e0bedf228c9f7fe::1769450486::res://.godot/exported/133200997/export-e15bedc87152977bef3d8cae4bed20a6-player.scn
+res://Global/audio_manager.tscn::916a184f14a7f580b238c9487351d13c::1769448013::res://.godot/exported/133200997/export-c214042d65e57d54dfce5011a3de438e-audio_manager.scn
+res://Global/bullet_pool.tscn::988ddff769ce827470f42ccb56b00ec7::1769340949::res://.godot/exported/133200997/export-a0a71c28576aca77670eb3aa947ac297-bullet_pool.scn
+res://Global/particles_loader.tscn::dd44d9fc0f9fd759f9ce458fc7524621::1769415146::res://.godot/exported/133200997/export-d8b7efce0147de0a6cb123867b03b55d-particles_loader.scn
+res://Global/transition_screen.tscn::289b83bbe5431803848ddc70c3dda65c::1769447321::res://.godot/exported/133200997/export-53861dd7fdecd78905febd5e4b4137a3-transition_screen.scn
+res://Main Scenes/base_scene.tscn::e323fcef769682f93e986fa33cc3ad2f::1769451842::res://.godot/exported/133200997/export-8b84ac7f35694e0de7b787e91dc98f5c-base_scene.scn
+res://Main Scenes/main_menu.tscn::730138cc2388e432b23dad86a5a00755::1769449998::res://.godot/exported/133200997/export-7b3a6176678e390eba944ca6334b2bca-main_menu.scn
+res://Managers/screen_clamper.tscn::794eb9a328d86d2d6373223997699285::1768914595::res://.godot/exported/133200997/export-c2cad4a7088c9bc3da4d5396d67310f8-screen_clamper.scn
+res://Relics/Adrenaline/adrenaline.tres::6598317a2ccd400e5f7791a1f0ace3fd::1769447240::res://.godot/exported/133200997/export-26c7785a58efdcef09f989de0e24abab-adrenaline.res
+res://Relics/Blazing Torch/blazing_torch.tres::f4c8d04957efbc006b3f41868fc1820b::1769390252::res://.godot/exported/133200997/export-ad7388d45fb6fed4084bc75aa6befebe-blazing_torch.res
+res://Relics/Car Battery/car_battery.tres::efc2bfe34202cef70eb33d3702e8e222::1769391491::res://.godot/exported/133200997/export-fe853720fe6ddf6e37b4cb1363118408-car_battery.res
+res://Relics/Coffee/coffee.tres::74df4a9ab9ae5caa4d3cb078c958b4c6::1769443820::res://.godot/exported/133200997/export-4074e16a19de0d07c50d3ab8a6435a86-coffee.res
+res://Relics/Gunpowder/gunpowder.tres::6d94f6ed4cb16fdd63b375f3a8618797::1769391461::res://.godot/exported/133200997/export-94007a864688e6117d50bddf69196d7b-gunpowder.res
+res://Relics/It's A Gun/its_a_gun.tres::332aa0b86262f0730961ff6c3609589a::1769316228::res://.godot/exported/133200997/export-fb344406a6f18a75bfc5b2ed986cc310-its_a_gun.res
+res://Relics/Magnifying Glass/magnifying_glass.tres::afe4327b6dfcf76fe1606403f8ce5b7f::1769419858::res://.godot/exported/133200997/export-f7991f62d3bb2d86e308efbd3bc16df5-magnifying_glass.res
+res://Relics/Needle/needle.tres::ff2d7d369b764d25ad86e16e7bfc3089::1769444548::res://.godot/exported/133200997/export-c50f7b1b82883875b57104a148dd7938-needle.res
+res://Relics/Pants On Fire/pants_on_fire.tres::deb2f4557d980b54592ad2761b056f7b::1769442662::res://.godot/exported/133200997/export-ce0ec1e3c52481328c8253a42aa63ca8-pants_on_fire.res
+res://Relics/Pocket Factory/pocket_factory.tres::30e12078ceab8e4d32b6800011f5d8f5::1769443023::res://.godot/exported/133200997/export-cbd2ed0e3859b86b42f6b50629e92afd-pocket_factory.res
+res://Relics/Shrapnel/shrapnel.tres::9a0a2f067d9fa338f1d63d33860a1f5e::1769420653::res://.godot/exported/133200997/export-1fb5a3a53767d8aef8801e8a2390f795-shrapnel.res
+res://Relics/Smart Bombs/smart_bomb.tres::e058037b52b0b20cc8077fdf26c57e36::1769450443::res://.godot/exported/133200997/export-d15fe91da4fb856d0a5e476e461fdbb2-smart_bomb.res
+res://Relics/Spray Bottle/spray_bottle.tres::0fc5ff8e8eb8b6f6101001280d691ae1::1769446735::res://.godot/exported/133200997/export-e59e012faa48f7c948f55c78e5a6e9e6-spray_bottle.res
+res://Relics/Stress Ball/stress_ball.tres::b1a0227692a2da0160e8453919274936::1769444515::res://.godot/exported/133200997/export-945edd03016941b3c24d26ce062f0312-stress_ball.res
+res://Relics/Trickshots For Dummies/trickshots_for_dummies.tres::41eb38a9f37f1ce8aed2425e47b1b65e::1769450309::res://.godot/exported/133200997/export-7315e3fdf0c8085a89afad5bf2043491-trickshots_for_dummies.res
+res://Relics/Winner's Medal/winners_medal.tres::7e964a7318d0c8b493d393fe82ac4fbc::1769420592::res://.godot/exported/133200997/export-46ace98accfa83f17c5f70bcccdd2eb3-winners_medal.res
+res://Relics/relic_pickup.tscn::aa1399830c9b45d55a6de502810f18ee::1769433150::res://.godot/exported/133200997/export-aacc3202bdd4775ab7a350bafdcbee4a-relic_pickup.scn
+res://Relics/relic_ui.tscn::e5b03ca59e749814d7fc2d4a53f71c8d::1769316228::res://.godot/exported/133200997/export-027d5a1cc47f15365c6cbd3cb3362703-relic_ui.scn
+res://Resources/main_resource.tres::aa0c6abe92a47cb0816694a44ac1e49a::1769449998::res://.godot/exported/133200997/export-964cb66b5da505c468a398eb80c6db04-main_resource.res
+res://default_bus_layout.tres::998ea9c85549b4b3c5ce542cc2edeafa::1769420653::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res

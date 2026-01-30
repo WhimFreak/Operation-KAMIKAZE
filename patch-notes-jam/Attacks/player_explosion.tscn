@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5mu1kms3oje"]
+
+[ext_resource type="Script" uid="uid://b6gnw57x33wm4" path="res://Attacks/player_explosion.gd" id="1_4vwo5"]
+[ext_resource type="Texture2D" uid="uid://ci7lmxmjgt311" path="res://Assets/player_explosion.png" id="2_4vwo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vwo5"]
+radius = 62.649822
+
+[node name="PlayerExplosion" type="Area2D"]
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4vwo5")
+
+[node name="ExplosionSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_4vwo5")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4vwo5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

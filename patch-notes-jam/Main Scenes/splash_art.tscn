@@ -1,0 +1,299 @@
+[gd_scene load_steps=21 format=3 uid="uid://dtfmnpncaqs10"]
+
+[ext_resource type="FontFile" uid="uid://b841ubdy7fuh5" path="res://Assets/PixeloidSans-mLxMm.ttf" id="1_p08pt"]
+[ext_resource type="FontFile" uid="uid://cyfm837dvfys8" path="res://Assets/PixeloidSansBold-PKnYd.ttf" id="2_66ijp"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="3_05nxs"]
+[ext_resource type="Texture2D" uid="uid://bfsjndrgbqflx" path="res://Entities/player.png" id="4_ruwa1"]
+[ext_resource type="Texture2D" uid="uid://ci7lmxmjgt311" path="res://Assets/player_explosion.png" id="5_le2nb"]
+[ext_resource type="Texture2D" uid="uid://cfxp72w7lt41o" path="res://Assets/ring.png" id="6_rr521"]
+[ext_resource type="Texture2D" uid="uid://co246bd47fsfr" path="res://Entities/Enemies/square.png" id="7_e76cq"]
+[ext_resource type="Texture2D" uid="uid://b4g5mwvglt5r8" path="res://Entities/Enemies/triangle.png" id="8_m181d"]
+[ext_resource type="Texture2D" uid="uid://c7qdb0lpdppur" path="res://Entities/Enemies/big_ring.png" id="9_dpph4"]
+[ext_resource type="Texture2D" uid="uid://bilpnirmki74o" path="res://Entities/Enemies/star.png" id="10_cct2r"]
+[ext_resource type="Theme" uid="uid://btv0jccufsmkm" path="res://Resources/main_resource.tres" id="11_jv6cx"]
+[ext_resource type="Texture2D" uid="uid://cyh1fj4p8xfs2" path="res://Entities/Bosses/heart.png" id="12_npvl0"]
+
+[sub_resource type="Environment" id="Environment_u2vun"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.77
+glow_bloom = 0.3
+glow_hdr_threshold = 2.68
+glow_hdr_scale = 3.76
+glow_hdr_luminance_cap = 256.0
+
+[sub_resource type="Theme" id="Theme_6u56u"]
+Label/fonts/font = ExtResource("1_p08pt")
+RichTextLabel/fonts/bold_font = ExtResource("2_66ijp")
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = ExtResource("1_p08pt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vqwu"]
+shader = ExtResource("3_05nxs")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Gradient" id="Gradient_dihv8"]
+offsets = PackedFloat32Array(0, 0.44148937, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6u56u"]
+gradient = SubResource("Gradient_dihv8")
+
+[sub_resource type="Curve" id="Curve_3vqwu"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5560748, 38.202248), 0.0, 0.0, 0, 0, Vector2(1, 35.955055), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1copb"]
+curve = SubResource("Curve_3vqwu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0vpee"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 171.73
+emission_ring_inner_radius = 60.98
+emission_ring_cone_angle = 90.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 20.0
+damping_curve = SubResource("CurveTexture_1copb")
+color = Color(1, 0.99215686, 1, 1)
+color_ramp = SubResource("GradientTexture1D_6u56u")
+
+[node name="Splashart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u2vun")
+
+[node name="BombScene" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 133.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerLabel" type="Label" parent="BombScene"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -17.0
+offset_right = 32.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6u56u")
+theme_override_colors/font_color = Color(1, 0.61960787, 0.49019608, 1)
+theme_override_font_sizes/font_size = 14
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bomb" type="TextureRect" parent="BombScene"]
+material = SubResource("ShaderMaterial_3vqwu")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+texture = ExtResource("4_ruwa1")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="BombScene"]
+modulate = Color(1, 1, 1, 0.15294118)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("5_le2nb")
+
+[node name="TextureRect2" type="TextureRect" parent="BombScene"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("5_le2nb")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="BombScene"]
+texture = ExtResource("6_rr521")
+lifetime = 20.0
+preprocess = 20.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0vpee")
+
+[node name="Enemies" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 239.0
+offset_top = 129.0
+offset_right = -262.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Square" type="TextureRect" parent="Enemies"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 174.0
+offset_right = 80.0
+offset_bottom = 214.0
+rotation = 2.4574237
+texture = ExtResource("7_e76cq")
+
+[node name="Triangle" type="TextureRect" parent="Enemies"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 1)
+layout_mode = 0
+offset_left = 618.0
+offset_top = 296.00003
+offset_right = 658.0
+offset_bottom = 336.00003
+rotation = 2.8693213
+texture = ExtResource("8_m181d")
+
+[node name="Circle" type="TextureRect" parent="Enemies"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 0.40392157)
+layout_mode = 0
+offset_left = 521.0
+offset_top = 165.0
+offset_right = 561.0
+offset_bottom = 205.0
+rotation = 4.644321
+texture = ExtResource("9_dpph4")
+
+[node name="Circle2" type="TextureRect" parent="Enemies/Circle"]
+modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 0
+offset_left = -9.523282
+offset_top = 7.369335
+offset_right = 30.476719
+offset_bottom = 47.369335
+rotation = 4.644321
+texture = ExtResource("9_dpph4")
+
+[node name="Star" type="TextureRect" parent="Enemies"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 0.40392157)
+layout_mode = 0
+offset_left = 28.999996
+offset_top = 398.99997
+offset_right = 77.0
+offset_bottom = 446.99997
+rotation = 4.644321
+texture = ExtResource("10_cct2r")
+
+[node name="Star2" type="TextureRect" parent="Enemies/Star"]
+modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 0
+offset_left = 15.283507
+offset_top = 99.269394
+offset_right = 63.28351
+offset_bottom = 147.2694
+rotation = 4.644321
+texture = ExtResource("10_cct2r")
+
+[node name="Triangle2" type="TextureRect" parent="Enemies"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 0.50980395)
+layout_mode = 0
+offset_left = 570.0
+offset_top = 438.0
+offset_right = 610.0
+offset_bottom = 478.0
+rotation = -1.0925761
+texture = ExtResource("8_m181d")
+
+[node name="Triangle" type="TextureRect" parent="Enemies/Triangle2"]
+modulate = Color(1, 1, 1, 0.4117647)
+layout_mode = 0
+offset_left = -7.3631964
+offset_top = -14.205047
+offset_right = 32.636803
+offset_bottom = 25.794952
+rotation = -1.6388642
+texture = ExtResource("8_m181d")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_jv6cx")
+theme_override_font_sizes/normal_font_size = 70
+theme_override_font_sizes/bold_font_size = 70
+bbcode_enabled = true
+text = "OPERATION:
+[b]KAMIKAZE"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RichTextLabel"]
+modulate = Color(0.99607843, 0.32941177, 0.43529412, 0.13725491)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 96)
+texture = ExtResource("12_npvl0")
+stretch_mode = 5

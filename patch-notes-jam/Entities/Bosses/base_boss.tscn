@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3mge82podgqq"]
+
+[ext_resource type="PackedScene" uid="uid://flr3gxms02rl" path="res://Entities/Enemies/base_enemy.tscn" id="1_k61kj"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="3_4dt34"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjfi8"]
+resource_local_to_scene = true
+shader = ExtResource("3_4dt34")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kir6x"]
+size = Vector2(112, 112)
+
+[sub_resource type="Gradient" id="Gradient_ivtsa"]
+offsets = PackedFloat32Array(0, 0.29245284, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k61kj"]
+gradient = SubResource("Gradient_ivtsa")
+
+[sub_resource type="Curve" id="Curve_8s6ub"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79861104, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4dt34"]
+curve = SubResource("Curve_8s6ub")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itby6"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_4dt34")
+scale_min = 0.29999998
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_k61kj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocrql"]
+size = Vector2(112, 112)
+
+[node name="BaseBoss" instance=ExtResource("1_k61kj")]
+level = 3
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_kjfi8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+nine_patch_stretch = true
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_kir6x")
+
+[node name="DeathParticles" parent="." index="3"]
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_itby6")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+amount = 8
+
+[node name="BossExplosionParticles" parent="." index="5"]
+amount = 16
+
+[node name="CollisionShape2D" parent="ContactHurtbox" index="0"]
+shape = SubResource("RectangleShape2D_ocrql")

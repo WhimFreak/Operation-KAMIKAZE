@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bnykd8g8f8nh5"]
+
+[ext_resource type="Script" uid="uid://cowqhgoy1wjb8" path="res://Relics/Trickshots For Dummies/trickshot_for_dummies.gd" id="1_hvjes"]
+[ext_resource type="Texture2D" uid="uid://dt4g6n2bna2p4" path="res://Relics/Trickshots For Dummies/trickshots_for_dummies.png" id="2_r0kaj"]
+
+[resource]
+script = ExtResource("1_hvjes")
+name = "TRICKSHOTS FOR DUMMIES"
+sprite = ExtResource("2_r0kaj")
+desc = "+ 1 BULLET PIERCE
+• PIERCING BULLETS BOUNCE TO A NEARBY TARGET INSTEAD IF THERE ARE ANY"
+stat_flat_mods = Dictionary[int, float]({
+6: 1.0
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

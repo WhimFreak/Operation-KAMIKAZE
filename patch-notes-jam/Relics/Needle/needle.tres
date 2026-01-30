@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://jyxntmkl5jhx"]
+
+[ext_resource type="Script" uid="uid://d0whfnmoqb8il" path="res://Relics/relic.gd" id="1_67ito"]
+[ext_resource type="Texture2D" uid="uid://cby2cvfurg3kc" path="res://Relics/Needle/needle.png" id="2_dadib"]
+
+[resource]
+script = ExtResource("1_67ito")
+name = "NEEDLE"
+sprite = ExtResource("2_dadib")
+desc = "+ 1 BULLET PIERCE
++ 25% SHOT SPEED"
+stat_flat_mods = Dictionary[int, float]({
+6: 1.0
+})
+stat_percent_mods = Dictionary[int, float]({
+3: 1.25
+})
+metadata/_custom_type_script = "uid://d0whfnmoqb8il"

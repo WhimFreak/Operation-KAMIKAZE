@@ -1,0 +1,472 @@
+[gd_scene load_steps=31 format=3 uid="uid://flr3gxms02rl"]
+
+[ext_resource type="Texture2D" uid="uid://co246bd47fsfr" path="res://Entities/Enemies/square.png" id="1_cxsjl"]
+[ext_resource type="Script" uid="uid://dhojm7yjy4oye" path="res://Entities/Enemies/base_enemy.gd" id="1_ejg2d"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_pa3af"]
+[ext_resource type="Script" uid="uid://ukoetpvw2d4p" path="res://Entities/Movement States/state_manager.gd" id="4_4wjja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u23yv"]
+resource_local_to_scene = true
+shader = ExtResource("2_pa3af")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wjja"]
+size = Vector2(28, 28)
+
+[sub_resource type="Gradient" id="Gradient_u23yv"]
+offsets = PackedFloat32Array(0, 0.29245284, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4wjja"]
+gradient = SubResource("Gradient_u23yv")
+
+[sub_resource type="Curve" id="Curve_rjo4h"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79861104, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4j68w"]
+curve = SubResource("Curve_rjo4h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3pklf"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_4j68w")
+scale_min = 0.29999998
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_4wjja")
+
+[sub_resource type="Gradient" id="Gradient_nsfki"]
+colors = PackedColorArray(1, 1, 1, 0.78431374, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_holwk"]
+gradient = SubResource("Gradient_nsfki")
+
+[sub_resource type="Curve" id="Curve_f1mpa"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79861104, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t64qh"]
+curve = SubResource("Curve_f1mpa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u23yv"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 700.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_t64qh")
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_holwk")
+
+[sub_resource type="Gradient" id="Gradient_oawjy"]
+colors = PackedColorArray(1, 1, 1, 0.78431374, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4th75"]
+gradient = SubResource("Gradient_oawjy")
+
+[sub_resource type="Curve" id="Curve_3v7ko"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79861104, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ufjb2"]
+curve = SubResource("Curve_3v7ko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4wjja"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 800.0
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_ufjb2")
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_4th75")
+
+[sub_resource type="Animation" id="Animation_ejg2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HealthBar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ContactHurtbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BossPreDeathParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BossExplosionParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rjo4h"]
+resource_name = "boss_death"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5666667, 2),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ContactHurtbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BossPreDeathParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BossExplosionParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["BossDie"],
+"method": &"play_audio"
+}, {
+"args": ["BossDie"],
+"method": &"play_audio"
+}, {
+"args": ["BossDie"],
+"method": &"play_audio"
+}, {
+"args": ["EnemyDie"],
+"method": &"play_audio"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cxsjl"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ContactHurtbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4wjja"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.141592653589793, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ContactHurtbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3af"]
+_data = {
+&"RESET": SubResource("Animation_ejg2d"),
+&"boss_death": SubResource("Animation_rjo4h"),
+&"death": SubResource("Animation_cxsjl"),
+&"spawn": SubResource("Animation_4wjja")
+}
+
+[sub_resource type="Animation" id="Animation_u23yv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pa3af"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.90000001341108, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wjja"]
+_data = {
+&"RESET": SubResource("Animation_u23yv"),
+&"hit": SubResource("Animation_pa3af")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjo4h"]
+size = Vector2(28, 28)
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+z_index = 3
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ejg2d")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+radius = 20.0
+max_neighbors = 12
+max_speed = 500.0
+avoidance_layers = 4
+avoidance_mask = 4
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_u23yv")
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)
+value = 70.0
+fill_mode = 3
+texture_under = ExtResource("1_cxsjl")
+texture_progress = ExtResource("1_cxsjl")
+tint_under = Color(0.24313726, 0.19607843, 0.39215687, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4wjja")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("1_cxsjl")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3pklf")
+
+[node name="BossPreDeathParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("1_cxsjl")
+lifetime = 1.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_u23yv")
+
+[node name="BossExplosionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+texture = ExtResource("1_cxsjl")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4wjja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pa3af")
+}
+
+[node name="HitAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4wjja")
+}
+
+[node name="StateManager" type="Node2D" parent="."]
+script = ExtResource("4_4wjja")
+
+[node name="ContactHurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHurtbox"]
+shape = SubResource("RectangleShape2D_rjo4h")
+
+[connection signal="body_entered" from="ContactHurtbox" to="." method="_on_contact_hurtbox_body_entered"]
+[connection signal="body_exited" from="ContactHurtbox" to="." method="_on_contact_hurtbox_body_exited"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dalk1531wl4oy"]
+
+[ext_resource type="PackedScene" uid="uid://d3mge82podgqq" path="res://Entities/Bosses/base_boss.tscn" id="1_6080c"]
+[ext_resource type="Shader" uid="uid://bcoy6haahi072" path="res://Resources/pulse.gdshader" id="2_ag0pe"]
+[ext_resource type="Texture2D" uid="uid://cyh1fj4p8xfs2" path="res://Entities/Bosses/heart.png" id="3_qau22"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdcaq"]
+resource_local_to_scene = true
+shader = ExtResource("2_ag0pe")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[node name="Heart" instance=ExtResource("1_6080c")]
+enemy_name = "THE HEART"
+immune = true
+
+[node name="HealthBar" parent="." index="1"]
+material = SubResource("ShaderMaterial_vdcaq")
+texture_under = ExtResource("3_qau22")
+texture_progress = ExtResource("3_qau22")
+
+[node name="DeathParticles" parent="." index="3"]
+texture = ExtResource("3_qau22")
+
+[node name="BossPreDeathParticles" parent="." index="4"]
+texture = ExtResource("3_qau22")
+
+[node name="BossExplosionParticles" parent="." index="5"]
+texture = ExtResource("3_qau22")
